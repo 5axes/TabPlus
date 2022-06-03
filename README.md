@@ -1,4 +1,4 @@
-# Tab Anti Warping
+# Tab Anti Warping +
 Add element as rounded Tab to limit warping effect in print corner.
 
 ![Pastille](./images/pastille_anti_wrapping.JPG)
@@ -19,7 +19,7 @@ First, make sure your Cura version is  4.4 or newer.
 
 Manual Install Download & extract the repository as ZIP or clone it. Copy the files/plugins/TabAntiWarping directory to:
 
-on Windows: [Cura installation folder]/plugins/TabAntiWarping
+on Windows: [Cura installation folder]/plugins/TabPlus
 
 on Linux: ~/.local/share/cura/[YOUR CURA VERSION]/plugins/TabAntiWarping (e.g. ~/.local/share/cura/4.6/plugins/TabAntiWarping)
 
@@ -53,9 +53,9 @@ First, make sure your Cura version is 4.4 or newer. This plugin is now avalaible
 
 >Note: it's easier to add/remove tabs when you are in "Solid View" mode
 
-### Update V1.1.0
+### Define as Capsule
 
-New option "Define as Capsule" to create a Capsule style tab. 
+Option "Define as Capsule" to create a Capsule style tab. 
 
 ![Menu](./images/menu.png)
 
@@ -66,9 +66,9 @@ This new design has been integrated following the request of [Reality4DEvolution
 The new design should offer a bevel on the outsite of the tab to be much more easy to remove, as you can get the scraper under it, and start to remove the project much easier.
 ![Scrapper](./images/test-capsule.jpg)
 
-### Update V1.2.0
+### Number of layers
 
-New option "Number of layers" to create tabs with several layers height. Discussion in this post : [Discussion #8](https://github.com/5axes/TabAntiWarping/discussions/8#).
+Option "Number of layers" to create tabs with several layers height. 
 
 ![Menu](./images/menu.jpg)
 
@@ -76,4 +76,15 @@ New option "Number of layers" to create tabs with several layers height. Discuss
 
 ![Message 100%](./images/message100pc.jpg)
 
-[![Version 2.5.5](http://img.youtube.com/vi/f2QXBWynIog/0.jpg)](http://www.youtube.com/watch?v=f2QXBWynIog)
+### Remove All / Last
+
+Button to remove the lasts tab created ( **!but also every element defined as support type** )
+
+### Automatic Addition
+
+Add automaticaly the tab on the point of the Convex hull representation of the part.
+
+The option "Set On Adhesion Area" offer to adds the tabs on the Adhesion Area border.
+##### YouTube video
+
+[![Version 2.5.5](http://img.youtube.com/vi/H0WI-OIgcFE/0.jpg)](http://www.youtube.com/watch?v=H0WI-OIgcFE)
