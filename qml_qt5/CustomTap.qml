@@ -121,7 +121,7 @@ Item
             validator: IntValidator
             {
 				bottom: 1
-				top: 10
+				top: 100
             }
 
             onEditingFinished:

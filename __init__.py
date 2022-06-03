@@ -1,5 +1,5 @@
 # Copyright (c) 2022 5@xes
-# Based on the SupportBlocker plugin by Ultimaker B.V., and licensed under LGPLv3 or higher.
+# Based on the TabAntiWarping plugin  and licensed under LGPLv3 or higher.
 
 VERSION_QT5 = False
 try:

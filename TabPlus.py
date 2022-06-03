@@ -78,9 +78,9 @@ class TabPlus(Tool):
 
         # Shortcut
         if not VERSION_QT5:
-            self._shortcut_key = Qt.Key.Key_I
+            self._shortcut_key = Qt.Key.Key_J
         else:
-            self._shortcut_key = Qt.Key_I
+            self._shortcut_key = Qt.Key_J
             
         self._controller = self.getController()
 
