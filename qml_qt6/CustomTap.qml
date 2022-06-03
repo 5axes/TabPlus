@@ -121,7 +121,7 @@ Item
             validator: IntValidator
             {
 				bottom: 1
-				top: 10
+				top: 100
             }
 
             onEditingFinished:
@@ -195,7 +195,7 @@ Item
 		width: UM.Theme.getSize("setting_control").width
 		height: UM.Theme.getSize("setting_control").height
 		highlighted : true		
-		text: "Automatic Addition"
+		text: catalog.i18nc("@label", "Automatic Addition")
 		onClicked: UM.ActiveTool.triggerAction("addAutoSupportMesh")
 	}
 	
