@@ -67,6 +67,7 @@ class TabPlus(Tool):
         self._UseOffset = 0.0
         self._AsCapsule = False
         self._Nb_Layer = 1
+        self._SMsg = 'Remove All'
 
 
         # Shortcut
@@ -99,7 +100,7 @@ class TabPlus(Tool):
             except:
                 pass
         
-        self.setExposedProperties("SSize", "SOffset", "SCapsule", "NLayer")
+        self.setExposedProperties("SSize", "SOffset", "SCapsule", "NLayer", "SMsg")
         
         CuraApplication.getInstance().globalContainerStackChanged.connect(self._updateEnabled)
         
@@ -311,7 +312,9 @@ class TabPlus(Tool):
         op.addOperation(SetParentOperation(node, parent))
         op.push()
         node.setPosition(position, CuraSceneNode.TransformSpace.World)
-
+        self._SMsg = 'Remove Last'
+        self.propertyChanged.emit()
+        
         CuraApplication.getInstance().getController().getScene().sceneChanged.emit(node)
 
     def _removeSupportMesh(self, node: CuraSceneNode):
@@ -470,7 +473,40 @@ class TabPlus(Tool):
 
         mesh.calculateNormals()
         return mesh
+ 
+    def removeAllSupportMesh(self):
+        if self._all_picked_node:
+            for node in self._all_picked_node:
+                node_stack = node.callDecoration("getStack")
+                if node_stack.getProperty("support_mesh", "value"):
+                    self._removeSupportMesh(node)
+            self._all_picked_node = []
+            self._SMsg = 'Remove All'
+            self.propertyChanged.emit()
+        else:        
+            for node in DepthFirstIterator(self._application.getController().getScene().getRoot()):
+                if node.callDecoration("isSliceable"):
+                    # N_Name=node.getName()
+                    # Logger.log('d', 'isSliceable : ' + str(N_Name))
+                    node_stack=node.callDecoration("getStack")           
+                    if node_stack:        
+                        if node_stack.getProperty("support_mesh", "value"):
+                            # N_Name=node.getName()
+                            # Logger.log('d', 'support_mesh : ' + str(N_Name)) 
+                            self._removeSupportMesh(node)
+
+    def getSMsg(self) -> bool:
+        """ 
+            return: golabl _SMsg  as text paramater.
+        """ 
+        return self._SMsg
     
+    def setSMsg(self, SMsg: str) -> None:
+        """
+        param SType: SMsg as text paramater.
+        """
+        self._SMsg = SMsg
+        
     def getSSize(self) -> float:
         """ 
             return: golabl _UseSize  in mm.

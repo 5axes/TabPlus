@@ -6,6 +6,7 @@
 //   "SOffset"  : Offset set on Tab in mm
 //   "SCapsule" : Define as capsule
 //   "NLayer"   : Number of layer
+//   "SMsg"        : Text for the Remove All Button
 //
 //-----------------------------------------------------------------------------
 
@@ -149,5 +150,28 @@ Item
 			Qt.openUrlExternally(getlinkCurrent)
 			}
 		}
+	}
+	
+	Rectangle {
+        id: rightRect
+        anchors.top: baseCheckBox.bottom
+		//color: UM.Theme.getColor("toolbar_background")
+		color: "#00000000"
+		width: UM.Theme.getSize("setting_control").width * 1.3
+		height: UM.Theme.getSize("setting_control").height 
+        anchors.left: parent.left
+		anchors.topMargin: UM.Theme.getSize("default_margin").height
+    }
+	
+	Button
+	{
+		id: removeAllButton
+		anchors.centerIn: rightRect
+		spacing: UM.Theme.getSize("default_margin").height
+		width: UM.Theme.getSize("setting_control").width
+		height: UM.Theme.getSize("setting_control").height
+		highlighted : true		
+		text: catalog.i18nc("@label", UM.ActiveTool.properties.getValue("SMsg"))
+		onClicked: UM.ActiveTool.triggerAction("removeAllSupportMesh")
 	}
 }
