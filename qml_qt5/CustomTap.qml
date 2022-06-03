@@ -125,6 +125,7 @@ Item
             }
         }		
     }
+	
 	CheckBox
 	{
 		id: useCapsuleCheckbox
@@ -133,8 +134,63 @@ Item
 		anchors.left: parent.left
 		text: catalog.i18nc("@option:check","Define as Capsule")
 		style: UM.Theme.styles.partially_checkbox
-		visible: abutmentButton.checked
 		checked: UM.ActiveTool.properties.getValue("SCapsule")
 		onClicked: UM.ActiveTool.setProperty("SCapsule", checked)
+	}
+	
+	Rectangle {
+        id: topRect
+        anchors.top: useCapsuleCheckbox.bottom 
+		color: "#00000000"
+		width: UM.Theme.getSize("setting_control").width * 1.3
+		height: UM.Theme.getSize("setting_control").height 
+        anchors.left: parent.left
+		anchors.topMargin: UM.Theme.getSize("default_margin").height
+    }
+	
+	Button
+	{
+		id: removeAllButton
+		anchors.centerIn: topRect
+		spacing: UM.Theme.getSize("default_margin").height
+		width: UM.Theme.getSize("setting_control").width
+		height: UM.Theme.getSize("setting_control").height
+		highlighted : true		
+		text: catalog.i18nc("@label", UM.ActiveTool.properties.getValue("SMsg"))
+		onClicked: UM.ActiveTool.triggerAction("removeAllSupportMesh")
+	}
+	
+	Rectangle {
+        id: bottomRect
+        anchors.top: topRect.bottom
+		//color: UM.Theme.getColor("toolbar_background")
+		color: "#00000000"
+		width: UM.Theme.getSize("setting_control").width * 1.3
+		height: UM.Theme.getSize("setting_control").height 
+        anchors.left: parent.left
+		anchors.topMargin: UM.Theme.getSize("default_margin").height
+    }
+	
+	Button
+	{
+		id: addAllButton
+		anchors.centerIn: bottomRect
+		spacing: UM.Theme.getSize("default_margin").height
+		width: UM.Theme.getSize("setting_control").width
+		height: UM.Theme.getSize("setting_control").height
+		highlighted : true		
+		text: catalog.i18nc("@label", "Automatic Addition")
+		onClicked: UM.ActiveTool.triggerAction("addAutoSupportMesh")
+	}
+	
+
+	CheckBox
+	{
+		id: useAreaCheckbox
+		anchors.top: bottomRect.bottom
+		text: catalog.i18nc("@option:check","Set On Adhesion Area")
+		style: UM.Theme.styles.partially_checkbox
+		checked: UM.ActiveTool.properties.getValue("SArea")
+		onClicked: UM.ActiveTool.setProperty("SArea", checked)
 	}
 }
