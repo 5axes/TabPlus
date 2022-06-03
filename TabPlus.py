@@ -74,6 +74,9 @@ class TabPlus(Tool):
         self._AdhesionArea = False
         self._Nb_Layer = 1
         self._SMsg = 'Remove All'
+        self._Mesg1 = False
+        self._Mesg2 = False
+        self._Mesg3 = False
 
 
         # Shortcut
@@ -263,7 +266,7 @@ class TabPlus(Tool):
         if self._AsCapsule:
             key="support_type"
             s_p = global_container_stack.getProperty(key, "value")
-            if s_p ==  'buildplate' :
+            if s_p ==  'buildplate' and not self._Mesg1 :
                 definition_key=key + " label"
                 untranslated_label=extruder_stack.getProperty(key,"label")
                 translated_label=i18n_catalog.i18nc(definition_key, untranslated_label) 
@@ -271,6 +274,8 @@ class TabPlus(Tool):
                 Logger.log('d', 'support_type different : ' + str(s_p))
                 # Define support_type=everywhere
                 global_container_stack.setProperty(key, "value", 'everywhere')
+                self._Mesg1 = True
+
                
         # Define support_xy_distance
         definition = stack.getSettingDefinition("support_xy_distance")
@@ -290,7 +295,7 @@ class TabPlus(Tool):
         # if self.Major < 5 or ( self.Major == 5 and self.Minor < 1 ) :
         key="support_xy_distance"
         _xy_distance = extruder_stack.getProperty(key, "value")
-        if self._UseOffset !=  _xy_distance :
+        if self._UseOffset !=  _xy_distance and not self._Mesg2 :
             _msg = "New value : %8.3f" % (self._UseOffset)          
             definition_key=key + " label"
             untranslated_label=extruder_stack.getProperty(key,"label")
@@ -302,12 +307,15 @@ class TabPlus(Tool):
                 global_container_stack.setProperty("support_xy_distance", "value", self._UseOffset)
             else:
                 extruder_stack.setProperty("support_xy_distance", "value", self._UseOffset)
+            
+            self._Mesg2 = True
+
  
         if self._Nb_Layer >1 :
             key="support_infill_rate"
             s_p = int(extruder_stack.getProperty(key, "value"))
             Logger.log('d', 'support_infill_rate actual : ' + str(s_p))
-            if s_p < 99 :
+            if s_p < 99 and not self._Mesg3 :
                 definition_key=key + " label"
                 untranslated_label=extruder_stack.getProperty(key,"label")
                 translated_label=i18n_catalog.i18nc(definition_key, untranslated_label)                
@@ -319,6 +327,7 @@ class TabPlus(Tool):
                 else:
                     extruder_stack.setProperty("support_infill_rate", "value", 100)
                 
+                self._Mesg3 = True
         
         
         op = GroupedOperation()
