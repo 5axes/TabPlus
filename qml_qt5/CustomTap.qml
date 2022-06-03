@@ -1,11 +1,16 @@
-// Copyright (c) 2016 Ultimaker B.V.
+//-----------------------------------------------------------------------------
+//
+// Copyright (c) 2022 5@xes
 // 
 // proterties values
 //   "SSize"    : Tab Size in mm
 //   "SOffset"  : Offset set on Tab in mm
 //   "SCapsule" : Define as capsule
+//   "SArea" 	: Set on Adhesion Area
 //   "NLayer"   : Number of layer
+//   "SMsg"        : Text for the Remove All Button
 //
+//-----------------------------------------------------------------------------
 
 import QtQuick 2.2
 import QtQuick.Controls 1.2
@@ -152,10 +157,8 @@ Item
 	{
 		id: removeAllButton
 		anchors.centerIn: topRect
-		spacing: UM.Theme.getSize("default_margin").height
 		width: UM.Theme.getSize("setting_control").width
-		height: UM.Theme.getSize("setting_control").height
-		highlighted : true		
+		height: UM.Theme.getSize("setting_control").height		
 		text: catalog.i18nc("@label", UM.ActiveTool.properties.getValue("SMsg"))
 		onClicked: UM.ActiveTool.triggerAction("removeAllSupportMesh")
 	}
@@ -163,7 +166,6 @@ Item
 	Rectangle {
         id: bottomRect
         anchors.top: topRect.bottom
-		//color: UM.Theme.getColor("toolbar_background")
 		color: "#00000000"
 		width: UM.Theme.getSize("setting_control").width * 1.3
 		height: UM.Theme.getSize("setting_control").height 
@@ -175,10 +177,8 @@ Item
 	{
 		id: addAllButton
 		anchors.centerIn: bottomRect
-		spacing: UM.Theme.getSize("default_margin").height
 		width: UM.Theme.getSize("setting_control").width
-		height: UM.Theme.getSize("setting_control").height
-		highlighted : true		
+		height: UM.Theme.getSize("setting_control").height	
 		text: catalog.i18nc("@label", "Automatic Addition")
 		onClicked: UM.ActiveTool.triggerAction("addAutoSupportMesh")
 	}
@@ -188,6 +188,7 @@ Item
 	{
 		id: useAreaCheckbox
 		anchors.top: bottomRect.bottom
+		anchors.topMargin: UM.Theme.getSize("default_margin").height
 		text: catalog.i18nc("@option:check","Set On Adhesion Area")
 		style: UM.Theme.styles.partially_checkbox
 		checked: UM.ActiveTool.properties.getValue("SArea")
