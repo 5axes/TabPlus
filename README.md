@@ -25,19 +25,11 @@ on Linux: ~/.local/share/cura/[YOUR CURA VERSION]/plugins/TabAntiWarping (e.g. ~
 
 on Mac: ~/Library/Application Support/cura/[YOUR CURA VERSION]/plugins/TabAntiWarping
 
-### Automatic installation
-First, make sure your Cura version is 4.4 or newer. This plugin is now avalaible in the Cura marketplace. So you can install it automaticaly from this place:
-
-![Automatic Install](./images/marketplace.jpg)
-
-[Tab Anti Warping on Ultimaker Market place](https://marketplace.ultimaker.com/app/cura/plugins/5axes/TabAntiWarping)
-
-
 
 ## How to use
 
 - Load a model in Cura and select it
-- Click on the "Tab Anti Warping" button on the left toolbar  (Shortcut I)
+- Click on the "Tab Anti Warping" button on the left toolbar  (Shortcut J)
 - Change de value for the tab *Size* in numeric input field in the tool panel if necessary
 
 
