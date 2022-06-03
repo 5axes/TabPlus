@@ -5,6 +5,7 @@
 //   "SSize"    : Tab Size in mm
 //   "SOffset"  : Offset set on Tab in mm
 //   "SCapsule" : Define as capsule
+//   "SArea" 	: Set on Adhesion Area
 //   "NLayer"   : Number of layer
 //   "SMsg"        : Text for the Remove All Button
 //
@@ -153,31 +154,8 @@ Item
 	}
 
 	Rectangle {
-        id: toptRect
-        anchors.top: textfields.bottom
-		//color: UM.Theme.getColor("toolbar_background")
-		color: "#00000000"
-		width: UM.Theme.getSize("setting_control").width * 1.3
-		height: UM.Theme.getSize("setting_control").height 
-        anchors.left: parent.left
-		anchors.topMargin: UM.Theme.getSize("default_margin").height
-    }
-	
-	Button
-	{
-		id: addAllButton
-		anchors.centerIn: toptRect
-		spacing: UM.Theme.getSize("default_margin").height
-		width: UM.Theme.getSize("setting_control").width
-		height: UM.Theme.getSize("setting_control").height
-		highlighted : true		
-		text: "Automatic addition"
-		onClicked: UM.ActiveTool.triggerAction("addAutoSupportMesh")
-	}
-	
-	Rectangle {
-        id: bottomRect
-        anchors.top: textfields.bottom
+        id: topRect
+        anchors.top: textfields.bottom 
 		//color: UM.Theme.getColor("toolbar_background")
 		color: "#00000000"
 		width: UM.Theme.getSize("setting_control").width * 1.3
@@ -189,7 +167,7 @@ Item
 	Button
 	{
 		id: removeAllButton
-		anchors.centerIn: bottomRect
+		anchors.centerIn: topRect
 		spacing: UM.Theme.getSize("default_margin").height
 		width: UM.Theme.getSize("setting_control").width
 		height: UM.Theme.getSize("setting_control").height
@@ -198,4 +176,37 @@ Item
 		onClicked: UM.ActiveTool.triggerAction("removeAllSupportMesh")
 	}
 	
+	Rectangle {
+        id: bottomRect
+        anchors.top: topRect.bottom
+		//color: UM.Theme.getColor("toolbar_background")
+		color: "#00000000"
+		width: UM.Theme.getSize("setting_control").width * 1.3
+		height: UM.Theme.getSize("setting_control").height 
+        anchors.left: parent.left
+		anchors.topMargin: UM.Theme.getSize("default_margin").height
+    }
+	
+	Button
+	{
+		id: addAllButton
+		anchors.centerIn: bottomRect
+		spacing: UM.Theme.getSize("default_margin").height
+		width: UM.Theme.getSize("setting_control").width
+		height: UM.Theme.getSize("setting_control").height
+		highlighted : true		
+		text: "Automatic Addition"
+		onClicked: UM.ActiveTool.triggerAction("addAutoSupportMesh")
+	}
+	
+
+	UM.CheckBox
+	{
+		id: useAreaCheckbox
+		anchors.top: bottomRect.bottom
+		text: catalog.i18nc("@option:check","Set On Adhesion Area")
+		checked: UM.ActiveTool.properties.getValue("SArea")
+		onClicked: UM.ActiveTool.setProperty("SArea", checked)
+	}
+
 }

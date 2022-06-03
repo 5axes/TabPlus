@@ -46,6 +46,7 @@ from UM.Settings.SettingInstance import SettingInstance
 from cura.Scene.SliceableObjectDecorator import SliceableObjectDecorator
 from cura.Scene.BuildPlateDecorator import BuildPlateDecorator
 from cura.Scene.CuraSceneNode import CuraSceneNode
+from UM.Scene.Iterator.DepthFirstIterator import DepthFirstIterator
 from UM.Scene.ToolHandle import ToolHandle
 from UM.Tool import Tool
 
@@ -70,6 +71,7 @@ class TabPlus(Tool):
         self._UseSize = 0.0
         self._UseOffset = 0.0
         self._AsCapsule = False
+        self._AdhesionArea = False
         self._Nb_Layer = 1
         self._SMsg = 'Remove All'
 
@@ -85,6 +87,9 @@ class TabPlus(Tool):
         self._selection_pass = None
 
         # self._i18n_catalog = None
+        
+        self._application = CuraApplication.getInstance()
+        
         
         self.Major=1
         self.Minor=0
@@ -104,7 +109,7 @@ class TabPlus(Tool):
             except:
                 pass
         
-        self.setExposedProperties("SSize", "SOffset", "SCapsule", "NLayer", "SMsg")
+        self.setExposedProperties("SSize", "SOffset", "SCapsule", "NLayer", "SMsg" ,"SArea" )
         
         CuraApplication.getInstance().globalContainerStackChanged.connect(self._updateEnabled)
         
@@ -134,7 +139,10 @@ class TabPlus(Tool):
 
         self._preferences.addPreference("customsupportcylinder/as_capsule", False)
         # convert as float to avoid further issue
-        self._AsCapsule = bool(self._preferences.getValue("customsupportcylinder/as_capsule"))   
+        self._AsCapsule = bool(self._preferences.getValue("customsupportcylinder/as_capsule")) 
+
+        self._preferences.addPreference("customsupportcylinder/adhesion_area", False)
+        self._AdhesionArea = bool(self._preferences.getValue("customsupportcylinder/adhesion_area"))   
 
         self._preferences.addPreference("customsupportcylinder/nb_layer", 1)
         # convert as float to avoid further issue
@@ -188,6 +196,9 @@ class TabPlus(Tool):
 
             picked_position = picking_pass.getPickedPosition(event.x, event.y)
 
+            Logger.log('d', "X : {}".format(picked_position.x))
+            Logger.log('d', "Y : {}".format(picked_position.y))
+                            
             # Add the support_mesh cube at the picked location
             self._createSupportMesh(picked_node, picked_position)
 
@@ -500,6 +511,49 @@ class TabPlus(Tool):
                             # Logger.log('d', 'support_mesh : ' + str(N_Name)) 
                             self._removeSupportMesh(node)
 
+            
+    def addAutoSupportMesh(self) -> int:
+        nb_Tab=0
+        act_position = Vector
+        
+        for node in DepthFirstIterator(self._application.getController().getScene().getRoot()):
+            if node.callDecoration("isSliceable"):
+                Logger.log('d', "isSliceable : {}".format(node.getName()))
+                node_stack=node.callDecoration("getStack")           
+                if node_stack: 
+                    type_infill_mesh = node_stack.getProperty("infill_mesh", "value")
+                    type_cutting_mesh = node_stack.getProperty("cutting_mesh", "value")
+                    type_support_mesh = node_stack.getProperty("support_mesh", "value")
+                    type_anti_overhang_mesh = node_stack.getProperty("anti_overhang_mesh", "value") 
+                    
+                    if not type_infill_mesh and not type_support_mesh and not type_anti_overhang_mesh :
+                    # and Selection.isSelected(node)
+                        Logger.log('d', "Mesh : {}".format(node.getName()))
+                        Logger.log('d', "ID : {}".format(node.getId()))
+                        
+                        #hull_polygon = node.callDecoration("getConvexHull")
+                        if self._AdhesionArea :
+                            hull_polygon = node.callDecoration("getAdhesionArea")
+                        else:
+                            hull_polygon = node.callDecoration("getConvexHull")
+                            
+                        if not hull_polygon or hull_polygon.getPoints is None:
+                            Logger.log("w", "Object {} cannot be calculated because it has no convex hull.".format(node.getName()))
+                            continue
+
+                        for point in hull_polygon.getPoints():
+                            nb_Tab+=1 
+                            Logger.log('d', "X : {}".format(point[0]))
+                            Logger.log('d', "Y : {}".format(point[1]))
+                            self._createSupportMesh(node, Vector(point[0], 0, point[1]))
+                            # Useless but keep it for the code example
+                            # act_node = self._controller.getScene().findObject(id(node))
+                            # if act_node:
+                            #     Logger.log('d', "Mesh To Add : {}".format(act_node.getName()))
+                            #     self._createSupportMesh(act_node, Vector(point[0], 0, point[1]))
+                               
+        return nb_Tab
+
     def getSMsg(self) -> bool:
         """ 
             return: golabl _SMsg  as text paramater.
@@ -592,3 +646,17 @@ class TabPlus(Tool):
         self._AsCapsule = SCapsule
         self._preferences.setValue("customsupportcylinder/as_capsule", SCapsule)
         
+    def getSArea(self) -> bool:
+        """ 
+            return: golabl _SArea  as boolean
+        """           
+        return self._AdhesionArea
+  
+    def setSArea(self, SArea: bool) -> None:
+        """
+        param SArea: as boolean.
+        """
+        self._AdhesionArea = SArea
+        self._preferences.setValue("customsupportcylinder/adhesion_area", SArea)
+ 
+
