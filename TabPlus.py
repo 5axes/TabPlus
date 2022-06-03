@@ -62,6 +62,10 @@ class TabPlus(Tool):
     def __init__(self):
         super().__init__()
         
+        # Stock Data  
+        self._all_picked_node = []
+        
+        
         # variable for menu dialog        
         self._UseSize = 0.0
         self._UseOffset = 0.0
@@ -312,6 +316,7 @@ class TabPlus(Tool):
         op.addOperation(SetParentOperation(node, parent))
         op.push()
         node.setPosition(position, CuraSceneNode.TransformSpace.World)
+        self._all_picked_node.append(node)
         self._SMsg = 'Remove Last'
         self.propertyChanged.emit()
         
