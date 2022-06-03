@@ -41,7 +41,7 @@ on Mac: ~/Library/Application Support/cura/[YOUR CURA VERSION]/plugins/TabAntiWa
 
 >Note: it's easier to add/remove tabs when you are in "Solid View" mode
 
-### Define as Capsule
+## Define as Capsule
 
 Option "Define as Capsule" to create a Capsule style tab. 
 
@@ -54,7 +54,7 @@ This new design has been integrated following the request of [Reality4DEvolution
 The new design should offer a bevel on the outsite of the tab to be much more easy to remove, as you can get the scraper under it, and start to remove the project much easier.
 ![Scrapper](./images/test-capsule.jpg)
 
-### Number of layers
+## Number of layers
 
 Option "Number of layers" to create tabs with several layers height. 
 
@@ -64,15 +64,15 @@ Option "Number of layers" to create tabs with several layers height.
 
 ![Message 100%](./images/message100pc.jpg)
 
-### Remove All / Last
+## Remove All / Last
 
 Button to remove the lasts tab created ( **!but also every element defined as support type** )
 
-### Automatic Addition
+## Automatic Addition
 
 Add automaticaly the tab on the point of the Convex hull representation of the part.
 
 The option "Set On Adhesion Area" offer to adds the tabs on the Adhesion Area border.
-##### YouTube video
+#### YouTube video
 
 [![Version 2.5.5](http://img.youtube.com/vi/H0WI-OIgcFE/0.jpg)](http://www.youtube.com/watch?v=H0WI-OIgcFE)
