@@ -23,7 +23,7 @@ Item
     height: childrenRect.height
     UM.I18nCatalog { id: catalog; name: "cura"}
 	
-	property string getlinkCurrent: "https://github.com/5axes/TabAntiWarping/wiki/How-to-use-it"
+	property string getlinkCurrent: "https://github.com/5axes/TabPlus/wiki"
 	property int localwidth:70
 
 
