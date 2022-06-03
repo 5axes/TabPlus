@@ -129,24 +129,24 @@ class TabPlus(Tool):
         
         # set the preferences to store the default value
         self._preferences = CuraApplication.getInstance().getPreferences()
-        self._preferences.addPreference("customsupportcylinder/p_size", 10)
+        self._preferences.addPreference("tab_plus/p_size", 10)
         # convert as float to avoid further issue
-        self._UseSize = float(self._preferences.getValue("customsupportcylinder/p_size"))
+        self._UseSize = float(self._preferences.getValue("tab_plus/p_size"))
  
-        self._preferences.addPreference("customsupportcylinder/p_offset", 0.16)
+        self._preferences.addPreference("tab_plus/p_offset", 0.16)
         # convert as float to avoid further issue
-        self._UseOffset = float(self._preferences.getValue("customsupportcylinder/p_offset"))
+        self._UseOffset = float(self._preferences.getValue("tab_plus/p_offset"))
 
-        self._preferences.addPreference("customsupportcylinder/as_capsule", False)
+        self._preferences.addPreference("tab_plus/as_capsule", False)
         # convert as float to avoid further issue
-        self._AsCapsule = bool(self._preferences.getValue("customsupportcylinder/as_capsule")) 
+        self._AsCapsule = bool(self._preferences.getValue("tab_plus/as_capsule")) 
 
-        self._preferences.addPreference("customsupportcylinder/adhesion_area", False)
-        self._AdhesionArea = bool(self._preferences.getValue("customsupportcylinder/adhesion_area"))   
+        self._preferences.addPreference("tab_plus/adhesion_area", False)
+        self._AdhesionArea = bool(self._preferences.getValue("tab_plus/adhesion_area"))   
 
-        self._preferences.addPreference("customsupportcylinder/nb_layer", 1)
+        self._preferences.addPreference("tab_plus/nb_layer", 1)
         # convert as float to avoid further issue
-        self._Nb_Layer = int(self._preferences.getValue("customsupportcylinder/nb_layer"))       
+        self._Nb_Layer = int(self._preferences.getValue("tab_plus/nb_layer"))       
      
                 
     def event(self, event):
@@ -587,7 +587,7 @@ class TabPlus(Tool):
         
         #Logger.log('d', 's_value : ' + str(s_value))        
         self._UseSize = s_value
-        self._preferences.setValue("customsupportcylinder/p_size", s_value)
+        self._preferences.setValue("tab_plus/p_size", s_value)
  
     def getNLayer(self) -> int:
         """ 
@@ -611,7 +611,7 @@ class TabPlus(Tool):
             
         Logger.log('d', 'i_value : ' + str(i_value))        
         self._Nb_Layer = i_value
-        self._preferences.setValue("customsupportcylinder/nb_layer", i_value)
+        self._preferences.setValue("tab_plus/nb_layer", i_value)
         
     def getSOffset(self) -> float:
         """ 
@@ -631,7 +631,7 @@ class TabPlus(Tool):
         
         #Logger.log('d', 's_value : ' + str(s_value))        
         self._UseOffset = s_value
-        self._preferences.setValue("customsupportcylinder/p_offset", s_value)
+        self._preferences.setValue("tab_plus/p_offset", s_value)
 
     def getSCapsule(self) -> bool:
         """ 
@@ -644,7 +644,7 @@ class TabPlus(Tool):
         param SCapsule: as boolean.
         """
         self._AsCapsule = SCapsule
-        self._preferences.setValue("customsupportcylinder/as_capsule", SCapsule)
+        self._preferences.setValue("tab_plus/as_capsule", SCapsule)
         
     def getSArea(self) -> bool:
         """ 
@@ -657,6 +657,6 @@ class TabPlus(Tool):
         param SArea: as boolean.
         """
         self._AdhesionArea = SArea
-        self._preferences.setValue("customsupportcylinder/adhesion_area", SArea)
+        self._preferences.setValue("tab_plus/adhesion_area", SArea)
  
 
