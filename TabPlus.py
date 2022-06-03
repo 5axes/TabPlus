@@ -7,18 +7,9 @@
 #  https://github.com/Ultimaker/Cura/tree/master/plugins/SupportEraser
 #
 # All modification 5@xes
-# First release 05-22-2020  First proof of concept
+# First release 03-06-2022  First proof of concept
 #------------------------------------------------------------------------------------------------------------------
-# V1.0.1 11-11-2020 Change the default height _layer_h = _layer_h * 1.2
-# V1.1.0 19-02-2021 Add Capsule option on Reality4DEvolution idea   Change supported release from API 7 (Cura 4.4)
-# V1.2.0 11-03-2021 Add option Number of layer
-# V1.2.1 11-06-2021 Check Cura version
-# V1.2.2 04-11-2021 Update Cura 4.12
 #
-# V1.3.0 03-05-2022 Update for Cura 5.0
-# V1.3.1 31-05-2022 Add help button in V5
-# V1.3.2 02-06-2022 global_stack = application.getGlobalContainerStack()
-# V1.3.3 02-06-2022 add translated parameter in the Warning message
 #------------------------------------------------------------------------------------------------------------------
 
 VERSION_QT5 = False
