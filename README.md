@@ -5,10 +5,6 @@ Add element as rounded Tab to limit warping effect in print corner.
 
 Using Helper Disks, which act on the corners of your model to help keep everything pinned down. Once the print is finished, the disks can be cut away pretty easily.
 
-Test with a diameter of 20mm and Support X/Y Distance=0.2mm. To keep a support with a full pattern don't goes over 20/25mm.
-
-![Pastille](./images/test.jpg)
-
 
 **Note : Actual solution is limited by the possibility to use just a global : Support X/Y Distance**
 
@@ -25,19 +21,11 @@ on Linux: ~/.local/share/cura/[YOUR CURA VERSION]/plugins/TabAntiWarping (e.g. ~
 
 on Mac: ~/Library/Application Support/cura/[YOUR CURA VERSION]/plugins/TabAntiWarping
 
-### Automatic installation
-First, make sure your Cura version is 4.4 or newer. This plugin is now avalaible in the Cura marketplace. So you can install it automaticaly from this place:
-
-![Automatic Install](./images/marketplace.jpg)
-
-[Tab Anti Warping on Ultimaker Market place](https://marketplace.ultimaker.com/app/cura/plugins/5axes/TabAntiWarping)
-
-
 
 ## How to use
 
 - Load a model in Cura and select it
-- Click on the "Tab Anti Warping" button on the left toolbar  (Shortcut I)
+- Click on the "Tab Anti Warping" button on the left toolbar  (Shortcut J)
 - Change de value for the tab *Size* in numeric input field in the tool panel if necessary
 
 
