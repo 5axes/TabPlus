@@ -535,8 +535,11 @@ class TabPlus(Tool):
                         if self._AdhesionArea :
                             hull_polygon = node.callDecoration("getAdhesionArea")
                         else:
-                            hull_polygon = node.callDecoration("getConvexHull")
+                            # hull_polygon = node.callDecoration("getConvexHull")
+                            # hull_polygon = node.callDecoration("getConvexHullBoundary")
+                            hull_polygon = node.callDecoration("_compute2DConvexHull")
                             
+        
                         if not hull_polygon or hull_polygon.getPoints is None:
                             Logger.log("w", "Object {} cannot be calculated because it has no convex hull.".format(node.getName()))
                             continue
