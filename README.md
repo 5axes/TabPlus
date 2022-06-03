@@ -5,10 +5,6 @@ Add element as rounded Tab to limit warping effect in print corner.
 
 Using Helper Disks, which act on the corners of your model to help keep everything pinned down. Once the print is finished, the disks can be cut away pretty easily.
 
-Test with a diameter of 20mm and Support X/Y Distance=0.2mm. To keep a support with a full pattern don't goes over 20/25mm.
-
-![Pastille](./images/test.jpg)
-
 
 **Note : Actual solution is limited by the possibility to use just a global : Support X/Y Distance**
 
