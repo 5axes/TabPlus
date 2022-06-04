@@ -1,5 +1,6 @@
 # Tab Anti Warping +
-Add element as rounded Tab to limit warping effect in print corner.
+Add element as rounded Tab to limit warping effect in print corner. This plugin is an improved version of my first plugin :TabAntiWarping](https://github.com/5axes/TabAntiWarping).
+
 
 ![Pastille](./images/pastille_anti_wrapping.JPG)
 
@@ -7,7 +8,6 @@ Using Helper Disks, which act on the corners of your model to help keep everythi
 
 
 **Note : Actual solution is limited by the possibility to use just a global : Support X/Y Distance**
-
 
 
 ## Installation
@@ -73,6 +73,7 @@ Button to remove the lasts tab created ( **!but also every element defined as su
 Add automaticaly the tab on the point of the Convex hull representation of the part.
 
 The option "Set On Adhesion Area" offer to adds the tabs on the Adhesion Area border.
+
 #### YouTube video
 
 [![Version 2.5.5](http://img.youtube.com/vi/H0WI-OIgcFE/0.jpg)](http://www.youtube.com/watch?v=H0WI-OIgcFE)
