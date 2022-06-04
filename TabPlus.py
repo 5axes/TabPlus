@@ -7,7 +7,8 @@
 #  https://github.com/Ultimaker/Cura/tree/master/plugins/SupportEraser
 #
 # All modification 5@xes
-# First release 03-06-2022  First proof of concept
+# First release  03-06-2022  First proof of concept
+# Second release 03-06-2022  New dev
 #------------------------------------------------------------------------------------------------------------------
 #
 #------------------------------------------------------------------------------------------------------------------
@@ -77,7 +78,6 @@ class TabPlus(Tool):
         self._Mesg1 = False
         self._Mesg2 = False
         self._Mesg3 = False
-
 
         # Shortcut
         if not VERSION_QT5:
@@ -523,7 +523,7 @@ class TabPlus(Tool):
             
     def addAutoSupportMesh(self) -> int:
         nb_Tab=0
-        act_position = Vector
+        act_position = Vector(0,0,0)
         
         for node in DepthFirstIterator(self._application.getController().getScene().getRoot()):
             if node.callDecoration("isSliceable"):
@@ -557,7 +557,13 @@ class TabPlus(Tool):
                             nb_Tab+=1 
                             Logger.log('d', "X : {}".format(point[0]))
                             Logger.log('d', "Y : {}".format(point[1]))
-                            self._createSupportMesh(node, Vector(point[0], 0, point[1]))
+                            new_position = Vector(point[0], 0, point[1])
+                            lg=act_position-new_position
+                            lengths = lg.length
+                            #self._UseSize
+                            Logger.log('d', "Lengths : {}".format(lengths))
+                            self._createSupportMesh(node, new_position)
+                            act_position = new_position
                             # Useless but keep it for the code example
                             # act_node = self._controller.getScene().findObject(id(node))
                             # if act_node:
@@ -620,8 +626,9 @@ class TabPlus(Tool):
  
         if i_value < 1:
             return
-            
-        Logger.log('d', 'i_value : ' + str(i_value))        
+        
+        self._Mesg3 = False
+        #Logger.log('d', 'i_value : ' + str(i_value))        
         self._Nb_Layer = i_value
         self._preferences.setValue("tab_plus/nb_layer", i_value)
         
@@ -641,7 +648,8 @@ class TabPlus(Tool):
         except ValueError:
             return
         
-        #Logger.log('d', 's_value : ' + str(s_value))        
+        #Logger.log('d', 's_value : ' + str(s_value)) 
+        self._Mesg2 = False        
         self._UseOffset = s_value
         self._preferences.setValue("tab_plus/p_offset", s_value)
 
@@ -655,6 +663,7 @@ class TabPlus(Tool):
         """
         param SCapsule: as boolean.
         """
+        self._Mesg1 = False
         self._AsCapsule = SCapsule
         self._preferences.setValue("tab_plus/as_capsule", SCapsule)
         
