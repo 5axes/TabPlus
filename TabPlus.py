@@ -24,6 +24,7 @@ except ImportError:
 
 from cura.CuraApplication import CuraApplication
 
+from UM.Resources import Resources
 from UM.Logger import Logger
 from UM.Message import Message
 from UM.Math.Vector import Vector
@@ -57,6 +58,7 @@ i18n_cura_catalog = i18nCatalog("cura")
 i18n_catalog = i18nCatalog("fdmprinter.def.json")
 i18n_extrud_catalog = i18nCatalog("fdmextruder.def.json")
 
+import os
 import math
 import numpy
 
@@ -92,7 +94,12 @@ class TabPlus(Tool):
         # self._i18n_catalog = None
         
         self._application = CuraApplication.getInstance()
-        
+
+        # Suggested solution from fieldOfView . in this discussion solved in Cura 4.9
+        # https://github.com/5axes/Calibration-Shapes/issues/1
+        # Cura are able to find the scripts from inside the plugin folder if the scripts are into a folder named resources
+        Resources.addSearchPath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "resources"))        
+
         
         self.Major=1
         self.Minor=0
