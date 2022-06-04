@@ -530,7 +530,7 @@ class TabPlus(Tool):
             
     def addAutoSupportMesh(self) -> int:
         nb_Tab=0
-        act_position = Vector(0,0,0)
+        act_position = Vector(99999.99,99999.99,99999.99)
         
         for node in DepthFirstIterator(self._application.getController().getScene().getRoot()):
             if node.callDecoration("isSliceable"):
@@ -545,7 +545,6 @@ class TabPlus(Tool):
                     if not type_infill_mesh and not type_support_mesh and not type_anti_overhang_mesh :
                     # and Selection.isSelected(node)
                         Logger.log('d', "Mesh : {}".format(node.getName()))
-                        Logger.log('d', "ID : {}".format(node.getId()))
                         
                         #hull_polygon = node.callDecoration("getConvexHull")
                         if self._AdhesionArea :
@@ -566,12 +565,15 @@ class TabPlus(Tool):
                             Logger.log('d', "Y : {}".format(point[1]))
                             new_position = Vector(point[0], 0, point[1])
                             lg=act_position-new_position
-                            lengths = lg.length
-                            #self._UseSize
+                            lengths = lg.length()
                             Logger.log('d', "Lengths : {}".format(lengths))
-                            self._createSupportMesh(node, new_position)
-                            act_position = new_position
-                            # Useless but keep it for the code example
+                            # Add a tab if the distance between 2 tabs are more than a Tab Radius
+                            # We have to tune this parameter or algorythm in the futur
+                            if lengths > (self._UseSize*0.5) :
+                                self._createSupportMesh(node, new_position)
+                                act_position = new_position
+                                
+                            # Useless but I keep it for the code example
                             # act_node = self._controller.getScene().findObject(id(node))
                             # if act_node:
                             #     Logger.log('d', "Mesh To Add : {}".format(act_node.getName()))
