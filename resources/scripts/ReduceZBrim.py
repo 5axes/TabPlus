@@ -221,7 +221,7 @@ class ReduceZBrim(Script):
                 if idl == 2 and is_begin_type_line(line):
                     idl = 0
                     line_index = lines.index(line)   
-                    lcd_gcode = "M117 End Reduce Z Brim Z{:.3f}".format(float(layer_height_0)) 
+                    lcd_gcode = "M117 End Brim Z{:.2f}".format(float(layer_height_0)) 
                     lines.insert(line_index , ";END_OF_MODIFICATION")
                     if UseLcd == True :               
                         lines.insert(line_index, lcd_gcode) 
@@ -263,7 +263,7 @@ class ReduceZBrim(Script):
                     lines.insert(line_index + 2, "G0 Z" + str(BrimReduce) )
                     lines.insert(line_index + 3, "M221 S" + str(layer_reduction) )
                     if UseLcd == True :
-                        lcd_gcode = "M117 Reduce Z Brim M221 S{:d}".format(int(layer_reduction))                     
+                        lcd_gcode = "M117 M221 S{:d}".format(int(layer_reduction))                     
                         lines.insert(line_index + 4, lcd_gcode)  
                         
                 if  ( is_z_line(line) or is_z_G1_line(line) ) and idl>1 :
