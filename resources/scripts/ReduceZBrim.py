@@ -92,6 +92,17 @@ def is_z_line(line: str) -> bool:
     """
     return "G0" in line and "Z" in line and not "E" in line
 
+def is_z_G1_line(line: str) -> bool:
+    """Check if current line is a G1 Z line
+
+    Args:
+        line (str): Gcode line
+
+    Returns:
+        bool: True if the line is a Z line segment
+    """
+    return "G1" in line and "Z" in line and not "E" in line
+    
 def is_e_line(line: str) -> bool:
     """Check if current line is a an Extruder line
 
@@ -188,7 +199,14 @@ class ReduceZBrim(Script):
                     "unit": "",
                     "type": "int",
                     "default_value": 1
-                }                
+                },
+                "lcdfeedback":
+                {
+                    "label": "Display details on LCD",
+                    "description": "This setting will insert M117 gcode instructions, to display current modification in the G-Code is being used.",
+                    "type": "bool",
+                    "default_value": true
+                }                  
             }
         }"""
 
@@ -198,19 +216,12 @@ class ReduceZBrim(Script):
         Logger.log('d', 'BrimReduce : {}'.format(BrimReduce))            
         extruder_id  = self.getSettingValueByKey("extruder_nb")
         extruder_id = extruder_id -1
+        UseLcd = self.getSettingValueByKey("lcdfeedback")
         
         
         idl=0
-        StartLine=''
-        FirstZToReplace=''
-        InitialE=''
-        StartZ=0
-        BrimZ=0
-        xyline=''
-        nb_line=0
         currentlayer=0
-
-        
+        Zhop=False 
 
         # Deprecation function
         # extrud = list(Application.getInstance().getGlobalContainerStack().extruders.values())
@@ -218,6 +229,7 @@ class ReduceZBrim(Script):
  
         layer_height_0 = extrud[extruder_id].getProperty("layer_height_0", "value")
         Logger.log('d', 'layer_height_0 : {}'.format(layer_height_0))
+        NewZ = "Z{:.2f}".format(float(BrimReduce)) 
         
         layer_reduction = int((BrimReduce/layer_height_0)*100)
         Logger.log('d', 'layer_reduction : {}'.format(layer_reduction))
@@ -234,8 +246,7 @@ class ReduceZBrim(Script):
             layer_index = data.index(layer)
             
             lines = layer.split("\n")
-            for line in lines:                  
-               
+            for line in lines:
                     
                 if line.startswith(";LAYER_COUNT:"):
                     # Logger.log("w", "found LAYER_COUNT %s", line[13:])
@@ -253,10 +264,13 @@ class ReduceZBrim(Script):
                 if idl == 2 and is_begin_type_line(line):
                     idl = 0
                     line_index = lines.index(line)   
-                    
+                    lcd_gcode = "M117 End Reduce Z Brim Z{:.3f}".format(float(layer_height_0)) 
                     lines.insert(line_index , ";END_OF_MODIFICATION")
+                    if UseLcd == True :               
+                        lines.insert(line_index, lcd_gcode) 
                     lines.insert(line_index , "M221 S100")
-                    lines.insert(line_index , "G0 Z"+str(layer_height_0))
+                    if Zhop == False :
+                        lines.insert(line_index , "G0 Z"+str(layer_height_0))
                     
                 #---------------------------------------------------
                 # Init modification of the BRIM extruding path
@@ -280,39 +294,36 @@ class ReduceZBrim(Script):
                 # ;TYPE:SKIRT
                 # G1 F3000 E5
                 # G1 F1080 X110.147 Y102.432 E0.00795
-
                 if idl == 1 and is_begin_skirt_line(line):
                     idl=2
-                    
-                    # StartLine get the Z height
-                    line_index = lines.index(line)-1
-                    StartLine=lines[line_index]
-                    searchZ = re.search(r"Z(\d*\.?\d*)", StartLine)
-                    if searchZ:
-                        StartZ=float(searchZ.group(1))
-                        FirstZToReplace="Z"+searchZ.group(1)
-                    
-                    # Test for Z hop case 
-                    ZHopLine=lines[line_index+2]
-                    searchZ = re.search(r"Z(\d*\.?\d*)", ZHopLine)
-                    if searchZ:
-                        StartZ=float(searchZ.group(1))
-                        FirstZToReplace="Z"+searchZ.group(1)
-                    BrimZ = StartZ
-                    # Logger.log('d', 'BrimZ   : {:f}'.format(BrimZ))                    
+                  
+                    line_index = lines.index(line)                 
  
-
                     #----------------------------
                     #    Begin of modification
-                    #----------------------------
-                    lines.insert(line_index + 2, ";BEGIN_OF_MODIFICATION")                    
-                    lines.insert(line_index + 3, "G0Z" + str(BrimReduce) )
-                    lines.insert(line_index + 4, "M221 S" + str(layer_reduction) )
-                    
-                if  is_z_line(line) and idl:
+                    #----------------------------   
+                    lines.insert(line_index + 1, ";BEGIN_OF_MODIFICATION")                  
+                    lines.insert(line_index + 2, "G0 Z" + str(BrimReduce) )
+                    lines.insert(line_index + 3, "M221 S" + str(layer_reduction) )
+                    if UseLcd == True :
+                        lcd_gcode = "M117 Reduce Z Brim M221 S{:d}".format(int(layer_reduction))                     
+                        lines.insert(line_index + 4, lcd_gcode)  
+                        
+                if  ( is_z_line(line) or is_z_G1_line(line) ) and idl>1 :
+                    # Logger.log('d', 'is_z_line : {}'.format(line))
                     searchZ = re.search(r"Z(\d*\.?\d*)", line)
                     if searchZ:
                         currentz=float(searchZ.group(1))
+                        if currentz == layer_height_0:
+                            Zhop=False                        
+                            line_index = lines.index(line) 
+                            ZToReplace = "Z" + str(currentz)
+                            lines[line_index]=line.replace(ZToReplace, NewZ)
+                            Logger.log('d', 'is_z_line to replace : {}'.format(line))
+                        else:
+                            if currentz > layer_height_0:
+                                Zhop=True 
+                                Logger.log('d', 'is_z_line Zhop : {}'.format(line))
                 
                 
             result = "\n".join(lines)
