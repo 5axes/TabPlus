@@ -113,28 +113,6 @@ def is_e_line(line: str) -> bool:
         bool: True if the line is an Extruder line segment
     """
     return "G1" in line  and "E" in line
-
-def is_relative_extrusion_line(line: str) -> bool:
-    """Check if current line is a relative extrusion line
-
-    Args:
-        line (str): Gcode line
-
-    Returns:
-        bool: True if the line is a relative extrusion line
-    """
-    return "M83" in line  
-
-def is_absolute_extrusion_line(line: str) -> bool:
-    """Check if current line is an absolute extrusion line
-
-    Args:
-        line (str): Gcode line
-
-    Returns:
-        bool: True if the line is an absolute  extrusion line
-    """
-    return "M82" in line  
     
 def is_only_extrusion_line(line: str) -> bool:
     """Check if current line is a pure extrusion command.
@@ -146,28 +124,7 @@ def is_only_extrusion_line(line: str) -> bool:
         bool: True if the line is a pure extrusion command
     """
     return "G1" in line and not "X" in line and not "Y" in line and "E" in line
-    
-def getXY(currentLine: str) -> Point2D:
-    """Create a ``Point2D`` object from a gcode line.
 
-    Args:
-        currentLine (str): gcode line
-
-    Raises:
-        SyntaxError: when the regular expressions cannot find the relevant coordinates in the gcode
-
-    Returns:
-        Point2D: the parsed coordinates
-    """
-    searchX = re.search(r"X(\d*\.?\d*)", currentLine)
-    searchY = re.search(r"Y(\d*\.?\d*)", currentLine)
-    if searchX and searchY:
-        elementX = searchX.group(1)
-        elementY = searchY.group(1)
-    else:
-        raise SyntaxError('Gcode file parsing error for line {currentLine}')
-
-    return Point2D(float(elementX), float(elementY))
     
 class ReduceZBrim(Script):
     def __init__(self):
@@ -213,7 +170,7 @@ class ReduceZBrim(Script):
     def execute(self, data):
 
         BrimReduce = float(self.getSettingValueByKey("reduce"))   
-        Logger.log('d', 'BrimReduce : {}'.format(BrimReduce))            
+        # Logger.log('d', 'BrimReduce : {}'.format(BrimReduce))            
         extruder_id  = self.getSettingValueByKey("extruder_nb")
         extruder_id = extruder_id -1
         UseLcd = self.getSettingValueByKey("lcdfeedback")
@@ -319,12 +276,11 @@ class ReduceZBrim(Script):
                             line_index = lines.index(line) 
                             ZToReplace = "Z" + str(currentz)
                             lines[line_index]=line.replace(ZToReplace, NewZ)
-                            Logger.log('d', 'is_z_line to replace : {}'.format(line))
+                            # Logger.log('d', 'is_z_line to replace : {}'.format(line))
                         else:
                             if currentz > layer_height_0:
                                 Zhop=True 
-                                Logger.log('d', 'is_z_line Zhop : {}'.format(line))
-                
+                                # Logger.log('d', 'is_z_line Zhop : {}'.format(line))            
                 
             result = "\n".join(lines)
             data[layer_index] = result
