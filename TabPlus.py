@@ -531,6 +531,7 @@ class TabPlus(Tool):
     def addAutoSupportMesh(self) -> int:
         nb_Tab=0
         act_position = Vector(99999.99,99999.99,99999.99)
+        first_pt=Vector
         
         for node in DepthFirstIterator(self._application.getController().getScene().getRoot()):
             if node.callDecoration("isSliceable"):
@@ -558,9 +559,21 @@ class TabPlus(Tool):
                         if not hull_polygon or hull_polygon.getPoints is None:
                             Logger.log("w", "Object {} cannot be calculated because it has no convex hull.".format(node.getName()))
                             continue
+                            
 
-                        for point in hull_polygon.getPoints():
-                            nb_Tab+=1 
+                        points=hull_polygon.getPoints()
+                        # nb_pt = point[0] / point[1] must be divided by 2
+                        nb_pt=points.size*0.5
+                        Logger.log('d', "Size pt : {}".format(nb_pt))
+                        
+                        for point in points:
+                            nb_Tab+=1
+                            Logger.log('d', "Nb_Tab : {}".format(nb_Tab))
+                            if nb_Tab == 1:
+                                first_pt = Vector(point[0], 0, point[1])
+                                Logger.log('d', "First X : {}".format(point[0]))
+                                Logger.log('d', "First Y : {}".format(point[1]))
+                                
                             Logger.log('d', "X : {}".format(point[0]))
                             Logger.log('d', "Y : {}".format(point[1]))
                             new_position = Vector(point[0], 0, point[1])
@@ -569,16 +582,25 @@ class TabPlus(Tool):
                             Logger.log('d', "Lengths : {}".format(lengths))
                             # Add a tab if the distance between 2 tabs are more than a Tab Radius
                             # We have to tune this parameter or algorythm in the futur
-                            if lengths > (self._UseSize*0.5) :
-                                self._createSupportMesh(node, new_position)
-                                act_position = new_position
-                                
+                            if nb_Tab == nb_pt:
+                                lgfl=(first_pt-new_position).length()
+                                 
+                                Logger.log('d', "Length First Last : {}".format(lgfl))
+                                if lengths > (self._UseSize*0.5) and lgfl > (self._UseSize*0.5) :
+                                    self._createSupportMesh(node, new_position)
+                                    act_position = new_position                               
+                            else:
+                                if lengths > (self._UseSize*0.5) :
+                                    self._createSupportMesh(node, new_position)
+                                    act_position = new_position
+                                 
                             # Useless but I keep it for the code example
                             # act_node = self._controller.getScene().findObject(id(node))
                             # if act_node:
                             #     Logger.log('d', "Mesh To Add : {}".format(act_node.getName()))
                             #     self._createSupportMesh(act_node, Vector(point[0], 0, point[1]))
-                               
+                            
+                             
         return nb_Tab
 
     def getSMsg(self) -> bool:
