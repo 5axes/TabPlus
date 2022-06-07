@@ -52,9 +52,11 @@ Option "Define as Capsule" to create a Capsule style tab.
 
 This new design has been integrated following the request of [Reality4DEvolution](https://github.com/Reality4DEvolution) in this post : [Discussion #9](https://github.com/5axes/TabAntiWarping/discussions/9) 
 
+
 ![Capsule design](./images/capsule.png)
 
 The new design should offer a bevel on the outsite of the tab to be much more easy to remove, as you can get the scraper under it, and start to remove the project much easier.
+
 ![Scrapper](./images/test-capsule.jpg)
 
 ## Number of layers
