@@ -568,29 +568,29 @@ class TabPlus(Tool):
                         
                         for point in points:
                             nb_Tab+=1
-                            Logger.log('d', "Nb_Tab : {}".format(nb_Tab))
+                            # Logger.log('d', "Nb_Tab : {}".format(nb_Tab))
                             if nb_Tab == 1:
                                 first_pt = Vector(point[0], 0, point[1])
-                                Logger.log('d', "First X : {}".format(point[0]))
-                                Logger.log('d', "First Y : {}".format(point[1]))
+                                # Logger.log('d', "First X : {}".format(point[0]))
+                                # Logger.log('d', "First Y : {}".format(point[1]))
                                 
-                            Logger.log('d', "X : {}".format(point[0]))
-                            Logger.log('d', "Y : {}".format(point[1]))
+                            # Logger.log('d', "X : {}".format(point[0]))
+                            # Logger.log('d', "Y : {}".format(point[1]))
                             new_position = Vector(point[0], 0, point[1])
                             lg=act_position-new_position
-                            lengths = lg.length()
-                            Logger.log('d', "Lengths : {}".format(lengths))
+                            lght = lg.length()
+                            # Logger.log('d', "Length : {}".format(lght))
                             # Add a tab if the distance between 2 tabs are more than a Tab Radius
                             # We have to tune this parameter or algorythm in the futur
                             if nb_Tab == nb_pt:
                                 lgfl=(first_pt-new_position).length()
                                  
-                                Logger.log('d', "Length First Last : {}".format(lgfl))
-                                if lengths > (self._UseSize*0.5) and lgfl > (self._UseSize*0.5) :
+                                # Logger.log('d', "Length First Last : {}".format(lgfl))
+                                if lght > (self._UseSize*0.5) and lgfl > (self._UseSize*0.5) :
                                     self._createSupportMesh(node, new_position)
                                     act_position = new_position                               
                             else:
-                                if lengths > (self._UseSize*0.5) :
+                                if lght > (self._UseSize*0.5) :
                                     self._createSupportMesh(node, new_position)
                                     act_position = new_position
                                  
