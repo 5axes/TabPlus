@@ -526,7 +526,6 @@ class TabPlus(Tool):
                             # N_Name=node.getName()
                             # Logger.log('d', 'support_mesh : ' + str(N_Name)) 
                             self._removeSupportMesh(node)
-
             
     def addAutoSupportMesh(self) -> int:
         nb_Tab=0
