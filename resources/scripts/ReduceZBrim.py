@@ -8,7 +8,8 @@
 #
 #------------------------------------------------------------------------------------------------------------------------------------
 #
-#   Version 1.0 04/06/2022 first prototype 
+#   Version 1.0 04/06/2022 first prototype  
+#   https://marlinfw.org/docs/gcode/M221.html
 #
 #------------------------------------------------------------------------------------------------------------------------------------
 
@@ -258,6 +259,7 @@ class ReduceZBrim(Script):
  
                     #----------------------------
                     #    Begin of modification
+                    #     https://marlinfw.org/docs/gcode/M221.html
                     #----------------------------   
                     lines.insert(line_index + 1, ";BEGIN_OF_MODIFICATION")                  
                     lines.insert(line_index + 2, "G0 Z" + str(BrimReduce) )
