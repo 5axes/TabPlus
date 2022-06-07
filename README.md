@@ -9,6 +9,9 @@ Using Helper Disks, which act on the corners of your model to help keep everythi
 
 **Note : Actual solution is limited by the possibility to use just a global : Support X/Y Distance**
 
+The automatic functions of adding and deleting tabs make it easy to create each elements.
+
+![Automatix Function](./images/buttons.png)
 
 ## Installation
 First, make sure your Cura version is  4.4 or newer.
