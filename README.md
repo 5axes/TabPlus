@@ -67,16 +67,20 @@ Option "Number of layers" to create tabs with several layers height.
 
 ![Message 100%](./images/message100pc.jpg)
 
-## Remove All / Last
-
-Button to remove the lasts tab created ( **!but also every element defined as support type** )
-
 ## Automatic Addition
 
 Add automaticaly the tab on the point of the Convex hull representation of the part.
 
 The option "Set On Adhesion Area" offer to adds the tabs on the Adhesion Area border.
 
+![Automatix Addition](./images/addition.png)
+
+## Remove All / Last
+
+Button to remove the lasts tab created ( **!but also every element defined as support type** )
+
+![Remove All](./images/remove_all.png)
+
 #### YouTube video
 
-[![Version 2.5.5](http://img.youtube.com/vi/H0WI-OIgcFE/0.jpg)](http://www.youtube.com/watch?v=H0WI-OIgcFE)
+[![Capsule Style](http://img.youtube.com/vi/H0WI-OIgcFE/0.jpg)](http://www.youtube.com/watch?v=H0WI-OIgcFE)
