@@ -16,7 +16,7 @@ The automatic functions of adding and deleting tabs make it easy to create each 
 ## Installation
 First, make sure your Cura version is  4.4 or newer.
 
-Manual Install Download & extract the repository as ZIP or clone it. Copy the files/plugins/TabAntiWarping directory to:
+Manual Install Download & extract the repository as ZIP or clone it. Copy the files/plugins/TabPlus directory to:
 
 on Windows: [Cura installation folder]/plugins/TabPlus
 
