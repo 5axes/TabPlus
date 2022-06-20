@@ -20,9 +20,9 @@ Manual Install Download & extract the repository as ZIP or clone it. Copy the fi
 
 on Windows: [Cura installation folder]/plugins/TabPlus
 
-on Linux: ~/.local/share/cura/[YOUR CURA VERSION]/plugins/TabAntiWarping (e.g. ~/.local/share/cura/4.6/plugins/TabAntiWarping)
+on Linux: ~/.local/share/cura/[YOUR CURA VERSION]/plugins/TabPlus (e.g. ~/.local/share/cura/4.6/plugins/TabPlus)
 
-on Mac: ~/Library/Application Support/cura/[YOUR CURA VERSION]/plugins/TabAntiWarping
+on Mac: ~/Library/Application Support/cura/[YOUR CURA VERSION]/plugins/TabPlus
 
 
 ## How to use
