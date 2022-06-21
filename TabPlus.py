@@ -10,7 +10,7 @@
 # First release  03-06-2022  First proof of concept
 # Second release 04-06-2022  New dev and add scripts
 #------------------------------------------------------------------------------------------------------------------
-#
+# 1.0.3 21-06-2022  Automatic addition can be only on selected element
 #------------------------------------------------------------------------------------------------------------------
 
 VERSION_QT5 = False
@@ -531,8 +531,12 @@ class TabPlus(Tool):
         nb_Tab=0
         act_position = Vector(99999.99,99999.99,99999.99)
         first_pt=Vector
-        
-        for node in DepthFirstIterator(self._application.getController().getScene().getRoot()):
+
+        nodes_list = self._getAllSelectedNodes()
+        if not nodes_list:
+            nodes_list = DepthFirstIterator(self._application.getController().getScene().getRoot())
+            
+        for node in nodes_list:
             if node.callDecoration("isSliceable"):
                 Logger.log('d', "isSliceable : {}".format(node.getName()))
                 node_stack=node.callDecoration("getStack")           
