@@ -22,6 +22,8 @@ except ImportError:
     from PyQt5.QtWidgets import QApplication
     VERSION_QT5 = True
 
+from typing import Optional, List
+
 from cura.CuraApplication import CuraApplication
 
 from UM.Resources import Resources
@@ -31,7 +33,6 @@ from UM.Math.Vector import Vector
 from UM.Tool import Tool
 from UM.Event import Event, MouseEvent
 from UM.Mesh.MeshBuilder import MeshBuilder
-from UM.Scene.Selection import Selection
 
 from cura.PickingPass import PickingPass
 
@@ -48,6 +49,8 @@ from UM.Settings.SettingInstance import SettingInstance
 from cura.Scene.SliceableObjectDecorator import SliceableObjectDecorator
 from cura.Scene.BuildPlateDecorator import BuildPlateDecorator
 from cura.Scene.CuraSceneNode import CuraSceneNode
+from UM.Scene.Selection import Selection
+from UM.Scene.SceneNode import SceneNode
 from UM.Scene.Iterator.DepthFirstIterator import DepthFirstIterator
 from UM.Scene.ToolHandle import ToolHandle
 from UM.Tool import Tool
@@ -526,7 +529,25 @@ class TabPlus(Tool):
                             # N_Name=node.getName()
                             # Logger.log('d', 'support_mesh : ' + str(N_Name)) 
                             self._removeSupportMesh(node)
-            
+ 
+    # Source code from MeshTools Plugin 
+    # Copyright (c) 2020 Aldo Hoeben / fieldOfView
+    def _getAllSelectedNodes(self) -> List[SceneNode]:
+        selection = Selection.getAllSelectedObjects()[:]
+        if selection:
+            deep_selection = []  # type: List[SceneNode]
+            for selected_node in selection:
+                if selected_node.hasChildren():
+                    deep_selection = deep_selection + selected_node.getAllChildren()
+                if selected_node.getMeshData() != None:
+                    deep_selection.append(selected_node)
+            if deep_selection:
+                return deep_selection
+
+        # Message(catalog.i18nc("@info:status", "Please select one or more models first"))
+
+        return []
+        
     def addAutoSupportMesh(self) -> int:
         nb_Tab=0
         act_position = Vector(99999.99,99999.99,99999.99)
