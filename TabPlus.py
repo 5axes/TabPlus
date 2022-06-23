@@ -285,7 +285,6 @@ class TabPlus(Tool):
                 # Define support_type=everywhere
                 global_container_stack.setProperty(key, "value", 'everywhere')
                 self._Mesg1 = True
-
                
         # Define support_xy_distance
         definition = stack.getSettingDefinition("support_xy_distance")
@@ -300,9 +299,8 @@ class TabPlus(Tool):
         extruder_stack = CuraApplication.getInstance().getExtruderManager().getActiveExtruderStacks()[0]
         #extruder = global_container_stack.extruderList[int(id_ex)]    
         
-        # hop to fix it in a futur release
+        # Hop to fix it in a futur release
         # https://github.com/Ultimaker/Cura/issues/9882
-        # if self.Major < 5 or ( self.Major == 5 and self.Minor < 1 ) :
         key="support_xy_distance"
         _xy_distance = extruder_stack.getProperty(key, "value")
         if self._UseOffset !=  _xy_distance and not self._Mesg2 :
@@ -319,7 +317,6 @@ class TabPlus(Tool):
                 extruder_stack.setProperty("support_xy_distance", "value", self._UseOffset)
             
             self._Mesg2 = True
-
  
         if self._Nb_Layer >1 :
             key="support_infill_rate"
@@ -338,7 +335,6 @@ class TabPlus(Tool):
                     extruder_stack.setProperty("support_infill_rate", "value", 100)
                 
                 self._Mesg3 = True
-        
         
         op = GroupedOperation()
         # First add node to the scene at the correct position/scale, before parenting, so the support mesh does not get scaled with the parent
@@ -494,8 +490,7 @@ class TabPlus(Tool):
             #Bottom 
             verts.append([0, l, 0])
             verts.append([r*math.cos(i*ang), l, r*math.sin(i*ang)])
-            verts.append([r*math.cos((i+1)*ang), l, r*math.sin((i+1)*ang)]) 
-            
+            verts.append([r*math.cos((i+1)*ang), l, r*math.sin((i+1)*ang)])          
             
         mesh.setVertices(numpy.asarray(verts, dtype=numpy.float32))
 
@@ -547,7 +542,8 @@ class TabPlus(Tool):
         # Message(catalog.i18nc("@info:status", "Please select one or more models first"))
 
         return []
-        
+
+    # Automatix creation    
     def addAutoSupportMesh(self) -> int:
         nb_Tab=0
         act_position = Vector(99999.99,99999.99,99999.99)
@@ -578,13 +574,11 @@ class TabPlus(Tool):
                             # hull_polygon = node.callDecoration("getConvexHull")
                             # hull_polygon = node.callDecoration("getConvexHullBoundary")
                             hull_polygon = node.callDecoration("_compute2DConvexHull")
-                            
-        
+                                   
                         if not hull_polygon or hull_polygon.getPoints is None:
                             Logger.log("w", "Object {} cannot be calculated because it has no convex hull.".format(node.getName()))
                             continue
                             
-
                         points=hull_polygon.getPoints()
                         # nb_pt = point[0] / point[1] must be divided by 2
                         nb_pt=points.size*0.5
@@ -619,12 +613,11 @@ class TabPlus(Tool):
                                     act_position = new_position
                                  
                             # Useless but I keep it for the code example
+                            # Using findObject(id(node))
                             # act_node = self._controller.getScene().findObject(id(node))
                             # if act_node:
                             #     Logger.log('d', "Mesh To Add : {}".format(act_node.getName()))
-                            #     self._createSupportMesh(act_node, Vector(point[0], 0, point[1]))
-                            
-                             
+                            #     self._createSupportMesh(act_node, Vector(point[0], 0, point[1]))                           
         return nb_Tab
 
     def getSMsg(self) -> bool:
@@ -656,8 +649,7 @@ class TabPlus(Tool):
             return
 
         if s_value <= 0:
-            return
-        
+            return      
         #Logger.log('d', 's_value : ' + str(s_value))        
         self._UseSize = s_value
         self._preferences.setValue("tab_plus/p_size", s_value)
@@ -734,5 +726,4 @@ class TabPlus(Tool):
         """
         self._AdhesionArea = SArea
         self._preferences.setValue("tab_plus/adhesion_area", SArea)
- 
 
