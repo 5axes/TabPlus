@@ -14,15 +14,25 @@ The automatic functions of adding and deleting tabs make it easy to create each 
 ![Automatix Function](./images/buttons.png)
 
 ## Installation
+
+#### Marketplace (recommended):
+This plugin is now avalaible in the Cura marketplace. So you can install it automaticaly from this place:
+
+![Automatic Install](./images/marketplace.jpg)
+
+[Name It on Ultimaker Market place](https://marketplace.ultimaker.com/app/cura/plugins/5axes/TabPlus)
+
+#### Manually:
 First, make sure your Cura version is  4.4 or newer.
 
-Manual Install Download & extract the repository as ZIP or clone it. Copy the files/plugins/TabPlus directory to:
+Download or clone the repository into `[Cura configuration folder]/plugins/NameIt`.
 
-on Windows: [Cura installation folder]/plugins/TabPlus
+The configuration folder can be found via **Help** -> **Show Configuration Folder** inside Cura.
 
-on Linux: ~/.local/share/cura/[YOUR CURA VERSION]/plugins/TabPlus (e.g. ~/.local/share/cura/4.6/plugins/TabPlus)
-
-on Mac: ~/Library/Application Support/cura/[YOUR CURA VERSION]/plugins/TabPlus
+This menu opens the following folder:
+* Windows: `%APPDATA%\cura\<Cura version>\`, (usually `C:\Users\<your username>\AppData\Roaming\cura\<Cura version>\`)
+* Mac OS: `$HOME/Library/Application Support/cura/<Cura version>/`
+* Linux: `$HOME/.local/share/cura/<Cura version>/`
 
 
 ## How to use
