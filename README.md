@@ -20,12 +20,12 @@ This plugin is now avalaible in the Cura marketplace. So you can install it auto
 
 ![Automatic Install](./images/marketplace.jpg)
 
-[Name It on Ultimaker Market place](https://marketplace.ultimaker.com/app/cura/plugins/5axes/TabPlus)
+[TabPlus on Ultimaker Market place](https://marketplace.ultimaker.com/app/cura/plugins/5axes/TabPlus)
 
 #### Manually:
 First, make sure your Cura version is  4.4 or newer.
 
-Download or clone the repository into `[Cura configuration folder]/plugins/NameIt`.
+Download or clone the repository into `[Cura configuration folder]/plugins/TabPlus`.
 
 The configuration folder can be found via **Help** -> **Show Configuration Folder** inside Cura.
 
