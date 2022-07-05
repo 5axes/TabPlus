@@ -15,10 +15,10 @@
 
 VERSION_QT5 = False
 try:
-    from PyQt6.QtCore import Qt, QTimer
+    from PyQt6.QtCore import Qt, QTimer, pyqtProperty, pyqtSignal, pyqtSlot, QUrl
     from PyQt6.QtWidgets import QApplication
 except ImportError:
-    from PyQt5.QtCore import Qt, QTimer
+    from PyQt5.QtCore import Qt, QTimer, pyqtProperty, pyqtSignal, pyqtSlot, QUrl
     from PyQt5.QtWidgets import QApplication
     VERSION_QT5 = True
 
@@ -83,6 +83,7 @@ class TabPlus(Tool):
         self._Mesg1 = False
         self._Mesg2 = False
         self._Mesg3 = False
+
 
         # Shortcut
         if not VERSION_QT5:
