@@ -10,7 +10,8 @@
 # First release  03-06-2022  First proof of concept
 # Second release 04-06-2022  New dev and add scripts
 #------------------------------------------------------------------------------------------------------------------
-# 1.0.3 21-06-2022  Automatic addition can be only on selected element
+# V1.0.3 21-06-2022    : Automatic addition can be only on selected element
+# V1.0.4 05-07-2022    : Use "grouped" operation for adding text : https://github.com/5axes/NameIt/issues/14
 #------------------------------------------------------------------------------------------------------------------
 
 VERSION_QT5 = False
@@ -214,7 +215,9 @@ class TabPlus(Tool):
             Logger.log('d', "Y : {}".format(picked_position.y))
                             
             # Add the support_mesh cube at the picked location
+            self._op = GroupedOperation()
             self._createSupportMesh(picked_node, picked_position)
+            self._op.push() 
 
     def _createSupportMesh(self, parent: CuraSceneNode, position: Vector):
         node = CuraSceneNode()
@@ -250,6 +253,7 @@ class TabPlus(Tool):
         else:
             # Cylinder creation Diameter , Increment angle 10°, length, layer_height_0*1.2
             mesh = self._createPastille(self._UseSize,10,_long,_layer_h)
+        
         
         node.setMeshData(mesh.build())
 
@@ -337,11 +341,11 @@ class TabPlus(Tool):
                 
                 self._Mesg3 = True
         
-        op = GroupedOperation()
+        #self._op = GroupedOperation()
         # First add node to the scene at the correct position/scale, before parenting, so the support mesh does not get scaled with the parent
-        op.addOperation(AddSceneNodeOperation(node, self._controller.getScene().getRoot()))
-        op.addOperation(SetParentOperation(node, parent))
-        op.push()
+        self._op.addOperation(AddSceneNodeOperation(node, self._controller.getScene().getRoot()))
+        self._op.addOperation(SetParentOperation(node, parent))
+        #op.push()
         node.setPosition(position, CuraSceneNode.TransformSpace.World)
         self._all_picked_node.append(node)
         self._SMsg = 'Remove Last'
@@ -553,7 +557,8 @@ class TabPlus(Tool):
         nodes_list = self._getAllSelectedNodes()
         if not nodes_list:
             nodes_list = DepthFirstIterator(self._application.getController().getScene().getRoot())
-            
+        
+        self._op = GroupedOperation()   
         for node in nodes_list:
             if node.callDecoration("isSliceable"):
                 Logger.log('d', "isSliceable : {}".format(node.getName()))
@@ -618,7 +623,8 @@ class TabPlus(Tool):
                             # act_node = self._controller.getScene().findObject(id(node))
                             # if act_node:
                             #     Logger.log('d', "Mesh To Add : {}".format(act_node.getName()))
-                            #     self._createSupportMesh(act_node, Vector(point[0], 0, point[1]))                           
+                            #     self._createSupportMesh(act_node, Vector(point[0], 0, point[1]))  
+        self._op.push() 
         return nb_Tab
 
     def getSMsg(self) -> bool:
