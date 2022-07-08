@@ -11,7 +11,7 @@
 # Second release 04-06-2022  New dev and add scripts
 #------------------------------------------------------------------------------------------------------------------
 # V1.0.3 21-06-2022    : Automatic addition can be only on selected element
-# V1.0.4 05-07-2022    : Use "grouped" operation for adding text : https://github.com/5axes/NameIt/issues/14
+# V1.0.4 05-07-2022    : Use "grouped" operation for adding tab; similar to this issue : https://github.com/5axes/NameIt/issues/14
 #------------------------------------------------------------------------------------------------------------------
 
 VERSION_QT5 = False
