@@ -12,6 +12,7 @@
 #------------------------------------------------------------------------------------------------------------------
 # V1.0.3 21-06-2022    : Automatic addition can be only on selected element
 # V1.0.4 05-07-2022    : Use "grouped" operation for adding tab; similar to this issue : https://github.com/5axes/NameIt/issues/14
+# V1.0.5 11-07-2022    : Change Style of Button for Cura 5.0 5.1
 #------------------------------------------------------------------------------------------------------------------
 
 VERSION_QT5 = False
