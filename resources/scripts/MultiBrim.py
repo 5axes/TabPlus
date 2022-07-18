@@ -241,6 +241,7 @@ class MultiBrim(Script):
                     # Logger.log("w", "found LAYER_COUNT %s", line[13:])
                     layercount=int(line[13:])                    
                
+                # ;LAYER:X
                 if is_begin_layer_line(line):
                     line_index = lines.index(line)    
                     # Logger.log('d', 'layer_lines : {}'.format(line))
@@ -272,6 +273,8 @@ class MultiBrim(Script):
                             lines.insert(line_index + nb_line, InitialE)
                         
                         #    Set Z position of the Brim
+                        #    the case not searchZ is not managed. It's normal like that if there is no Z in Stratline
+                        #    Then the postprocesing script will not produce a Gcode modification
                         searchZ = re.search(r"Z(\d*\.?\d*)", StartLine)
                         if searchZ:
                             FirstZToReplace="Z"+searchZ.group(1)                       
@@ -309,7 +312,17 @@ class MultiBrim(Script):
                         nb_line+=1
                         lines.insert(line_index + nb_line, ";END_OF_MODIFICATION")
                         BrimZ += StartZ
-     
+                
+                #---------------------------------------
+                # Stock the FirstZToReplace
+                #---------------------------------------                
+                if idl == 1 :
+                    searchZ = re.search(r"Z(\d*\.?\d*)", line)
+                    if searchZ:
+                        StartZ=float(searchZ.group(1))
+                        FirstZToReplace="Z"+searchZ.group(1)
+                        Logger.log('d', 'First Z ToReplace : {}'.format(FirstZToReplace))
+                        
                 if idl == 2 and is_begin_type_line(line):
                     idl = 0
                     
@@ -329,6 +342,7 @@ class MultiBrim(Script):
                 
                 #---------------------------------------
                 # Init copy of the BRIM extruding path
+                # TYPE:SKIRT
                 #---------------------------------------
                 # G0 F6000 X106.445 Y116.579 Z0.2   -> StartLine
                 # ;TYPE:SKIRT
@@ -372,15 +386,8 @@ class MultiBrim(Script):
                         StartZ=float(searchZ.group(1))
                         FirstZToReplace="Z"+searchZ.group(1)
                     else :
-                        # Logger.log('d', 'Format  5.0  : {}'.format(StartLine))
-                        PreviousStartLine=lines[line_index-1]
-                        # Logger.log('d', 'Format  5.0 PreviousStartLine : {}'.format(PreviousStartLine))
-                        searchZ = re.search(r"Z(\d*\.?\d*)", PreviousStartLine)
-                        if searchZ:
-                            StartZ=float(searchZ.group(1))
-                            FirstZToReplace="Z"+searchZ.group(1)
-                            StartLine += " "
-                            StartLine += FirstZToReplace
+                        StartLine += " "
+                        StartLine += FirstZToReplace
                         Logger.log('d', 'Format  5.0 StartLine : {}'.format(StartLine))
 
                     # Test for Z hop case 
@@ -389,6 +396,8 @@ class MultiBrim(Script):
                     if searchZ:
                         StartZ=float(searchZ.group(1))
                         FirstZToReplace="Z"+searchZ.group(1)
+                        Logger.log('d', 'Mode Z Hop : {}'.format(FirstZToReplace))
+                        
                     BrimZ = StartZ
                     # Logger.log('d', 'BrimZ   : {:f}'.format(BrimZ))                    
  
