@@ -2,7 +2,7 @@
 Add element as rounded Tab to limit warping effect in print corner. This plugin is an improved version of my first plugin : [TabAntiWarping](https://github.com/5axes/TabAntiWarping).
 
 
-![Pastille](./images/pastille_anti_wrapping.JPG)
+![Pastille](./images/pastille_anti_wrapping.jpg)
 
 Using Helper Disks, which act on the corners of your model to help keep everything pinned down. Once the print is finished, the disks can be cut away pretty easily.
 
