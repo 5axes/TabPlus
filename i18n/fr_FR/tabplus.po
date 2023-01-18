@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Custom Support Cylinder\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-05-11 15:10+0000\n"
-"PO-Revision-Date: 2023-01-19 00:15+0200\n"
+"PO-Revision-Date: 2023-01-19 00:27+0200\n"
 "Last-Translator: 5axes <5axes@free.fr>\n"
 "Language-Team: 5axes\n"
 "Language: fr\n"
@@ -20,7 +20,7 @@ msgstr ""
 #: __init__.py:23
 msgctxt "@label"
 msgid "Tab Plus"
-msgstr "Pastille Plus"
+msgstr "Pastille Anti-Décollement +"
 
 #: __init__.py:24
 msgctxt "@info:tooltip"
@@ -30,12 +30,12 @@ msgstr "Ajouter automatique Pastille"
 #: TabPlus.py:
 msgctxt "@info:title"
 msgid "Tab Plus"
-msgstr "Pastille Plus"
+msgstr "Pastille Anti-Décollement +"
 
 #: TabPlus.py:
 msgctxt "@info:title"
 msgid "Warning ! Tab Anti Warping"
-msgstr "Attention ! Pastille Anti-décollement"
+msgstr "Attention ! Pastille Anti-décollement Plus"
 
 #: TabPlus.py:
 msgctxt "@info:label"
