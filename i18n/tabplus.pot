@@ -32,6 +32,31 @@ msgctxt "@info:title"
 msgid "Tab Plus"
 msgstr ""
 
+#: TabPlus.py:
+msgctxt "@info:title"
+msgid "Warning ! Tab Anti Warping"
+msgstr ""
+
+#: TabPlus.py:
+msgctxt "@info:label"
+msgid "Info modification current profile '"
+msgstr ""
+
+#: TabPlus.py:
+msgctxt "@info:label"
+msgid "' parameter\nNew value : "
+msgstr ""
+
+#: TabPlus.py:
+msgctxt "@info:label"
+msgid "100%"
+msgstr ""
+
+#: TabPlus.py:
+msgctxt "@info:label"
+msgid "Everywhere"
+msgstr ""
+
 #: TabPlus.py::
 msgctxt "@label"
 msgid "Remove All"

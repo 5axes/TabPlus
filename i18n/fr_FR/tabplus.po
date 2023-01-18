@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Custom Support Cylinder\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-05-11 15:10+0000\n"
-"PO-Revision-Date: 2023-01-18 19:18+0200\n"
+"PO-Revision-Date: 2023-01-19 00:15+0200\n"
 "Last-Translator: 5axes <5axes@free.fr>\n"
 "Language-Team: 5axes\n"
 "Language: fr\n"
@@ -32,6 +32,33 @@ msgctxt "@info:title"
 msgid "Tab Plus"
 msgstr "Pastille Plus"
 
+#: TabPlus.py:
+msgctxt "@info:title"
+msgid "Warning ! Tab Anti Warping"
+msgstr "Attention ! Pastille Anti-décollement"
+
+#: TabPlus.py:
+msgctxt "@info:label"
+msgid "Info modification current profile '"
+msgstr "Information modification du profil actuel Paramètre '"
+
+#: TabPlus.py:
+msgctxt "@info:label"
+msgid "' parameter\nNew value : "
+msgstr ""
+"'\n"
+"Nouvelle valeur : "
+
+#: TabPlus.py:
+msgctxt "@info:label"
+msgid "100%"
+msgstr "100%"
+
+#: TabPlus.py:
+msgctxt "@info:label"
+msgid "Everywhere"
+msgstr "Partout"
+
 #: TabPlus.py::
 msgctxt "@label"
 msgid "Remove All"
@@ -40,7 +67,7 @@ msgstr "Supprimer Tous"
 #: TabPlus.py::
 msgctxt "@label"
 msgid "Remove Last"
-msgstr "Supprimer les derniers"
+msgstr "Supprimer Derniers"
 
 #: qml_qt6/CustomTab.qml: qml_qt5/CustomTab.qml:
 msgctxt "@label"

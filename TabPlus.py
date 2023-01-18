@@ -58,7 +58,7 @@ from UM.Scene.Iterator.DepthFirstIterator import DepthFirstIterator
 from UM.Scene.ToolHandle import ToolHandle
 from UM.Tool import Tool
 
-import os
+import os.path 
 import math
 import numpy
 
@@ -296,7 +296,8 @@ class TabPlus(Tool):
                 definition_key=key + " label"
                 untranslated_label=extruder_stack.getProperty(key,"label")
                 translated_label=i18n_catalog.i18nc(definition_key, untranslated_label) 
-                Message(text = "Info modification current profile '" + translated_label  + "' parameter\nNew value : everywhere", title = i18n_cura_catalog.i18nc("@info:title", "Warning ! Tab Anti Warping")).show()
+                Format_String = catalog.i18nc("@info:label", "Info modification current profile '") + translated_label  + catalog.i18nc("@info:label", "' parameter\nNew value : ") + catalog.i18nc("@info:label", "Everywhere")
+                Message(text = Format_String, title = catalog.i18nc("@info:title", "Warning ! Tab Anti Warping")).show()
                 Logger.log('d', 'support_type different : ' + str(s_p))
                 # Define support_type=everywhere
                 global_container_stack.setProperty(key, "value", 'everywhere')
@@ -324,7 +325,8 @@ class TabPlus(Tool):
             definition_key=key + " label"
             untranslated_label=extruder_stack.getProperty(key,"label")
             translated_label=i18n_catalog.i18nc(definition_key, untranslated_label) 
-            Message(text = "Info modification current profile '%s' parameter\nNew value : %8.3f" % (translated_label, self._UseOffset), title = i18n_cura_catalog.i18nc("@info:title", "Warning ! Tab Anti Warping")).show()
+            Format_String = catalog.i18nc("@info:label", "Info modification current profile '") + "%s" + catalog.i18nc("@info:label", "' parameter\nNew value : ") + "%8.3f"
+            Message(text = Format_String % (translated_label, self._UseOffset), title = catalog.i18nc("@info:title", "Warning ! Tab Anti Warping")).show()
             Logger.log('d', 'support_xy_distance different : ' + str(_xy_distance))
             # Define support_xy_distance
             if self._Extruder_count > 1 :
@@ -341,8 +343,9 @@ class TabPlus(Tool):
             if s_p < 99 and not self._Mesg3 :
                 definition_key=key + " label"
                 untranslated_label=extruder_stack.getProperty(key,"label")
-                translated_label=i18n_catalog.i18nc(definition_key, untranslated_label)                
-                Message(text = "Info modification current profile '" + translated_label + "' parameter\nNew value : 100%" , title = i18n_cura_catalog.i18nc("@info:title", "Warning ! Tab Anti Warping")).show()
+                translated_label=i18n_catalog.i18nc(definition_key, untranslated_label)     
+                Format_String = catalog.i18nc("@info:label", "Info modification current profile '") + translated_label + catalog.i18nc("@info:label", "' parameter\nNew value : ")+ catalog.i18nc("@info:label", "100%")                
+                Message(text = Format_String , title = catalog.i18nc("@info:title", "Warning ! Tab Anti Warping")).show()
                 Logger.log('d', 'support_infill_rate different : ' + str(s_p))
                 # Define support_infill_rate=100%
                 if self._Extruder_count > 1 :
