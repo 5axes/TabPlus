@@ -25,7 +25,7 @@ This plugin is now avalaible in the Cura marketplace. So you can install it auto
 #### Manually:
 First, make sure your Cura version is  4.4 or newer.
 
-Download or clone the repository into `[Cura configuration folder]/plugins/TabPlus`.
+[Download](https://github.com/5axes/TabPlus/archive/refs/heads/main.zip) or clone the repository into `[Cura configuration folder]/plugins/TabPlus`.
 
 The configuration folder can be found via **Help** -> **Show Configuration Folder** inside Cura.
 
