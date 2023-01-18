@@ -22,7 +22,7 @@ Item
     id: base
     width: childrenRect.width
     height: childrenRect.height
-    UM.I18nCatalog { id: catalog; name: "cura"}
+    UM.I18nCatalog { id: catalog; name: "tabplus"}
 	
 	property string getlinkCurrent: "https://github.com/5axes/TabPlus/wiki"
 	property int localwidth:70
@@ -42,7 +42,7 @@ Item
         Label
         {
             height: UM.Theme.getSize("setting_control").height
-            text: "Size"
+            text: catalog.i18nc("@label", "Size")
             font: UM.Theme.getFont("default")
             color: UM.Theme.getColor("text")
             verticalAlignment: Text.AlignVCenter
@@ -74,7 +74,7 @@ Item
         Label
         {
             height: UM.Theme.getSize("setting_control").height
-            text: "X/Y Distance"
+            text: catalog.i18nc("@label", "X/Y Distance")
             font: UM.Theme.getFont("default")
             color: UM.Theme.getColor("text")
             verticalAlignment: Text.AlignVCenter
@@ -105,7 +105,7 @@ Item
         Label
         {
             height: UM.Theme.getSize("setting_control").height
-            text: "Number of layers"
+            text: catalog.i18nc("@label", "Number of layers")
             font: UM.Theme.getFont("default")
             color: UM.Theme.getColor("text")
             verticalAlignment: Text.AlignVCenter

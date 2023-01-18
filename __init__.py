@@ -10,7 +10,7 @@ except ImportError:
 from . import TabPlus
 
 from UM.i18n import i18nCatalog
-i18n_catalog = i18nCatalog("cura")
+i18n_catalog = i18nCatalog("tabplus")
 
 def getMetaData():
     if not VERSION_QT5:

@@ -1,0 +1,73 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the Measure Tool package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Custom Support Cylinder\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-05-11 15:10+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: __init__.py:23
+msgctxt "@label"
+msgid "Tab Plus"
+msgstr ""
+
+#: __init__.py:24
+msgctxt "@info:tooltip"
+msgid "Add Automatique Tab"
+msgstr ""
+
+#: TabPlus.py:
+msgctxt "@info:title"
+msgid "Tab Plus"
+msgstr ""
+
+#: TabPlus.py::
+msgctxt "@label"
+msgid "Remove All"
+msgstr ""
+
+#: TabPlus.py::
+msgctxt "@label"
+msgid "Remove Last"
+msgstr ""
+
+#: qml_qt6/CustomTab.qml: qml_qt5/CustomTab.qml:
+msgctxt "@label"
+msgid "Size"
+msgstr ""
+
+#: qml_qt6/CustomTab.qml: qml_qt5/CustomTab.qml:
+msgctxt "@label"
+msgid "X/Y Distance"
+msgstr ""
+
+#: qml_qt6/CustomTab.qml: qml_qt5/CustomTab.qml:
+msgctxt "@label"
+msgid "Number of layers"
+msgstr ""
+
+#: qml_qt6/CustomTab.qml: qml_qt5/CustomTab.qml:
+msgctxt "@label"
+msgid "Automatic Addition"
+msgstr ""
+
+#: qml_qt6/CustomTab.qml: qml_qt5/CustomTab.qml:
+msgctxt "@option:check"
+msgid "Define as Capsule"
+msgstr ""
+
+#: qml_qt6/CustomTab.qml: qml_qt5/CustomTab.qml:
+msgctxt "@option:check"
+msgid "Set On Adhesion Area"
+msgstr ""

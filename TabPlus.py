@@ -57,16 +57,27 @@ from UM.Scene.Iterator.DepthFirstIterator import DepthFirstIterator
 from UM.Scene.ToolHandle import ToolHandle
 from UM.Tool import Tool
 
-from UM.i18n import i18nCatalog
-catalog = i18nCatalog("cura")
-i18n_cura_catalog = i18nCatalog("cura")
-i18n_catalog = i18nCatalog("fdmprinter.def.json")
-i18n_extrud_catalog = i18nCatalog("fdmextruder.def.json")
-
 import os
 import math
 import numpy
 
+from UM.Resources import Resources
+from UM.i18n import i18nCatalog
+
+i18n_cura_catalog = i18nCatalog("cura")
+i18n_catalog = i18nCatalog("fdmprinter.def.json")
+i18n_extrud_catalog = i18nCatalog("fdmextruder.def.json")
+
+Resources.addSearchPath(
+    os.path.join(os.path.abspath(os.path.dirname(__file__)))
+)  # Plugin translation file import
+
+catalog = i18nCatalog("tabplus")
+
+if catalog.hasTranslationLoaded():
+    Logger.log("i", "Tab Plus Plugin translation loaded!")
+    
+    
 class TabPlus(Tool):
     def __init__(self):
         super().__init__()
@@ -81,7 +92,7 @@ class TabPlus(Tool):
         self._AsCapsule = False
         self._AdhesionArea = False
         self._Nb_Layer = 1
-        self._SMsg = 'Remove All'
+        self._SMsg = catalog.i18nc("@message", "Remove All") 
         self._Mesg1 = False
         self._Mesg2 = False
         self._Mesg3 = False
@@ -96,8 +107,6 @@ class TabPlus(Tool):
         self._controller = self.getController()
 
         self._selection_pass = None
-
-        # self._i18n_catalog = None
         
         self._application = CuraApplication.getInstance()
 
@@ -349,7 +358,7 @@ class TabPlus(Tool):
         #op.push()
         node.setPosition(position, CuraSceneNode.TransformSpace.World)
         self._all_picked_node.append(node)
-        self._SMsg = 'Remove Last'
+        self._SMsg = catalog.i18nc("@message", "Remove Last") 
         self.propertyChanged.emit()
         
         CuraApplication.getInstance().getController().getScene().sceneChanged.emit(node)
@@ -517,7 +526,7 @@ class TabPlus(Tool):
                 if node_stack.getProperty("support_mesh", "value"):
                     self._removeSupportMesh(node)
             self._all_picked_node = []
-            self._SMsg = 'Remove All'
+            self._SMsg = catalog.i18nc("@message", "Remove All") 
             self.propertyChanged.emit()
         else:        
             for node in DepthFirstIterator(self._application.getController().getScene().getRoot()):
