@@ -14,6 +14,7 @@
 # V1.0.4 05-07-2022    : Use "grouped" operation for adding tab; similar to this issue : https://github.com/5axes/NameIt/issues/14
 # V1.0.5 11-07-2022    : Change Style of Button for Cura 5.0 5.1
 # V1.1.0 18-01-2023    : Integrate translation + French translation
+# V1.1.1 19-01-2023    : Supress Ressource directory
 #------------------------------------------------------------------------------------------------------------------
 
 VERSION_QT5 = False
@@ -114,8 +115,8 @@ class TabPlus(Tool):
         # Suggested solution from fieldOfView . in this discussion solved in Cura 4.9
         # https://github.com/5axes/Calibration-Shapes/issues/1
         # Cura are able to find the scripts from inside the plugin folder if the scripts are into a folder named resources
-        Resources.addSearchPath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "resources"))        
-
+        # V1.1.1 Already added for Translation .. Don't need More SearchPath
+        # Resources.addSearchPath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "resources"))        
         
         self.Major=1
         self.Minor=0
