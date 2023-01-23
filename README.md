@@ -95,4 +95,4 @@ Button to remove the lasts tab created ( **!but also every element defined as su
 
 #### YouTube video
 
-[![Capsule Style](http://img.youtube.com/vi/H0WI-OIgcFE/0.jpg)](http://www.youtube.com/watch?v=H0WI-OIgcFE)
+[![Capsule Style](http://img.youtube.com/vi/K2niowptW7M/0.jpg)](http://www.youtube.com/watch?v=K2niowptW7M)
