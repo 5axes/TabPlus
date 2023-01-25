@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Custom Support Cylinder\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-11 15:10+0000\n"
-"PO-Revision-Date: 2023-01-19 00:27+0200\n"
+"POT-Creation-Date: 2023-01-25 10:56+0000\n"
+"PO-Revision-Date: 2023-01-25 12:03+0200\n"
 "Last-Translator: 5axes <5axes@free.fr>\n"
 "Language-Team: 5axes\n"
 "Language: fr\n"
@@ -27,74 +27,79 @@ msgctxt "@info:tooltip"
 msgid "Add Automatique Tab"
 msgstr "Ajouter automatique Pastille"
 
-#: TabPlus.py:
-msgctxt "@info:title"
-msgid "Tab Plus"
-msgstr "Pastille Anti-Décollement +"
-
-#: TabPlus.py:
-msgctxt "@info:title"
-msgid "Warning ! Tab Anti Warping"
-msgstr "Attention ! Pastille Anti-décollement Plus"
-
-#: TabPlus.py:
-msgctxt "@info:label"
-msgid "Info modification current profile '"
-msgstr "Information modification du profil actuel Paramètre '"
-
-#: TabPlus.py:
-msgctxt "@info:label"
-msgid "' parameter\nNew value : "
-msgstr ""
-"'\n"
-"Nouvelle valeur : "
-
-#: TabPlus.py:
-msgctxt "@info:label"
-msgid "100%"
-msgstr "100%"
-
-#: TabPlus.py:
-msgctxt "@info:label"
-msgid "Everywhere"
-msgstr "Partout"
-
-#: TabPlus.py::
+#: TabPlus.py:97 TabPlus.py:534
 msgctxt "@label"
 msgid "Remove All"
 msgstr "Supprimer Tous"
 
-#: TabPlus.py::
+#: TabPlus.py:300 TabPlus.py:329 TabPlus.py:348
+msgctxt "@info:label"
+msgid "Info modification current profile '"
+msgstr "Information modification du profil actuel Paramètre '"
+
+#: TabPlus.py:300 TabPlus.py:329 TabPlus.py:348
+msgctxt "@info:label"
+msgid ""
+"' parameter\n"
+"New value : "
+msgstr ""
+"'\n"
+"Nouvelle valeur : "
+
+#: TabPlus.py:300
+msgctxt "@info:label"
+msgid "Everywhere"
+msgstr "Partout"
+
+#: TabPlus.py:301 TabPlus.py:330 TabPlus.py:349
+msgctxt "@info:title"
+msgid "Warning ! Tab Anti Warping Plus"
+msgstr "Attention ! Pastille Anti-décollement Plus"
+
+#: TabPlus.py:348
+msgctxt "@info:label"
+msgid "100%"
+msgstr "100%"
+
+#: TabPlus.py:366
 msgctxt "@label"
 msgid "Remove Last"
 msgstr "Supprimer Derniers"
 
-#: qml_qt6/CustomTab.qml: qml_qt5/CustomTab.qml:
+#: qml_qt6/CustomTap.qml:45 qml_qt5/CustomTap.qml:42
 msgctxt "@label"
 msgid "Size"
 msgstr "Taille"
 
-#: qml_qt6/CustomTab.qml: qml_qt5/CustomTab.qml:
+#: qml_qt6/CustomTap.qml:77 qml_qt5/CustomTap.qml:53
 msgctxt "@label"
 msgid "X/Y Distance"
 msgstr "Distance X/Y"
 
-#: qml_qt6/CustomTab.qml: qml_qt5/CustomTab.qml:
+#: qml_qt6/CustomTap.qml:108 qml_qt5/CustomTap.qml:64
 msgctxt "@label"
 msgid "Number of layers"
 msgstr "Nombre de couches"
 
-#: qml_qt6/CustomTab.qml: qml_qt5/CustomTab.qml:
-msgctxt "@label"
-msgid "Automatic Addition"
-msgstr "Ajout automatique"
-
-#: qml_qt6/CustomTab.qml: qml_qt5/CustomTab.qml:
+#: qml_qt6/CustomTap.qml:136 qml_qt5/CustomTap.qml:140
 msgctxt "@option:check"
 msgid "Define as Capsule"
 msgstr "Définir comme Capsule"
 
-#: qml_qt6/CustomTab.qml: qml_qt5/CustomTab.qml:
+#: qml_qt6/CustomTap.qml:197 qml_qt5/CustomTap.qml:182
+msgctxt "@label"
+msgid "Automatic Addition"
+msgstr "Ajout automatique"
+
+#: qml_qt6/CustomTap.qml:206 qml_qt5/CustomTap.qml:192
 msgctxt "@option:check"
 msgid "Set On Adhesion Area"
 msgstr "Créer sur la Zone d'adhérence"
+
+#~ msgctxt "@info:title"
+#~ msgid "Tab Plus"
+#~ msgstr "Pastille Anti-Décollement +"
+
+#~ msgctxt "@info:title"
+#~ msgid "Warning ! Tab Anti Warping"
+#~ msgstr "Attention ! Pastille Anti-décollement Plus"

@@ -94,7 +94,7 @@ class TabPlus(Tool):
         self._AsCapsule = False
         self._AdhesionArea = False
         self._Nb_Layer = 1
-        self._SMsg = catalog.i18nc("@message", "Remove All") 
+        self._SMsg = catalog.i18nc("@label", "Remove All") 
         self._Mesg1 = False
         self._Mesg2 = False
         self._Mesg3 = False
@@ -363,7 +363,7 @@ class TabPlus(Tool):
         #op.push()
         node.setPosition(position, CuraSceneNode.TransformSpace.World)
         self._all_picked_node.append(node)
-        self._SMsg = catalog.i18nc("@message", "Remove Last") 
+        self._SMsg = catalog.i18nc("@label", "Remove Last") 
         self.propertyChanged.emit()
         
         CuraApplication.getInstance().getController().getScene().sceneChanged.emit(node)
@@ -531,7 +531,7 @@ class TabPlus(Tool):
                 if node_stack.getProperty("support_mesh", "value"):
                     self._removeSupportMesh(node)
             self._all_picked_node = []
-            self._SMsg = catalog.i18nc("@message", "Remove All") 
+            self._SMsg = catalog.i18nc("@label", "Remove All") 
             self.propertyChanged.emit()
         else:        
             for node in DepthFirstIterator(self._application.getController().getScene().getRoot()):

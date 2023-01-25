@@ -28,7 +28,7 @@ msgid "Add Automatique Tab"
 msgstr ""
 
 #: TabPlus.py:97 TabPlus.py:534
-msgctxt "@message"
+msgctxt "@label"
 msgid "Remove All"
 msgstr ""
 
@@ -60,7 +60,7 @@ msgid "100%"
 msgstr ""
 
 #: TabPlus.py:366
-msgctxt "@message"
+msgctxt "@label"
 msgid "Remove Last"
 msgstr ""
 
