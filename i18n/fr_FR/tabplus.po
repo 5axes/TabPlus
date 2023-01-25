@@ -1,10 +1,10 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the Measure Tool package.
+# This file is distributed under the same license as the Tab Plus package.
 # 5axes <5axes@free.fr>, 2023.
 msgid ""
 msgstr ""
-"Project-Id-Version: Custom Support Cylinder\n"
+"Project-Id-Version: Tab Plus\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-01-25 10:56+0000\n"
 "PO-Revision-Date: 2023-01-25 12:03+0200\n"
@@ -96,10 +96,3 @@ msgctxt "@option:check"
 msgid "Set On Adhesion Area"
 msgstr "Créer sur la Zone d'adhérence"
 
-#~ msgctxt "@info:title"
-#~ msgid "Tab Plus"
-#~ msgstr "Pastille Anti-Décollement +"
-
-#~ msgctxt "@info:title"
-#~ msgid "Warning ! Tab Anti Warping"
-#~ msgstr "Attention ! Pastille Anti-décollement Plus"
