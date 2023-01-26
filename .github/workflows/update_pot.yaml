@@ -29,4 +29,4 @@ jobs:
       - if: ${{steps.git_diff.outputs.numstat != '1 1 i18n/tabplus.pot'}}
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: Update i18n template
+          commit_message: Update i18n template for tabplus.pot
