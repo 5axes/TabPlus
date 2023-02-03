@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Tab Plus\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-26 16:24+0000\n"
+"POT-Creation-Date: 2023-02-03 08:48+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,39 +27,39 @@ msgctxt "@info:tooltip"
 msgid "Add Automatique Tab"
 msgstr ""
 
-#: TabPlus.py:97 TabPlus.py:534
+#: TabPlus.py:98 TabPlus.py:183 TabPlus.py:540 TabPlus.py:584
 msgctxt "@label"
 msgid "Remove All"
 msgstr ""
 
-#: TabPlus.py:300 TabPlus.py:329 TabPlus.py:348
+#: TabPlus.py:306 TabPlus.py:335 TabPlus.py:354
 msgctxt "@info:label"
 msgid "Info modification current profile '"
 msgstr ""
 
-#: TabPlus.py:300 TabPlus.py:329 TabPlus.py:348
+#: TabPlus.py:306 TabPlus.py:335 TabPlus.py:354
 msgctxt "@info:label"
 msgid ""
 "' parameter\n"
 "New value : "
 msgstr ""
 
-#: TabPlus.py:300
+#: TabPlus.py:306
 msgctxt "@info:label"
 msgid "Everywhere"
 msgstr ""
 
-#: TabPlus.py:301 TabPlus.py:330 TabPlus.py:349
+#: TabPlus.py:307 TabPlus.py:336 TabPlus.py:355
 msgctxt "@info:title"
 msgid "Warning ! Tab Anti Warping Plus"
 msgstr ""
 
-#: TabPlus.py:348
+#: TabPlus.py:354
 msgctxt "@info:label"
 msgid "100%"
 msgstr ""
 
-#: TabPlus.py:366
+#: TabPlus.py:372
 msgctxt "@label"
 msgid "Remove Last"
 msgstr ""
