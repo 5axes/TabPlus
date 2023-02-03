@@ -15,6 +15,7 @@
 # V1.0.5 11-07-2022    : Change Style of Button for Cura 5.0 5.1
 # V1.1.0 18-01-2023    : Integrate translation + French translation
 # V1.1.1 19-01-2023    : Supress Ressource directory
+# V1.1.2 03-02-2023    : Reset data for delete tabs on a new fileload
 #------------------------------------------------------------------------------------------------------------------
 
 VERSION_QT5 = False
@@ -122,7 +123,7 @@ class TabPlus(Tool):
         self.Minor=0
 
         # Logger.log('d', "Info Version CuraVersion --> " + str(Version(CuraVersion)))
-        Logger.log('d', "Info CuraVersion --> " + str(CuraVersion))
+        # Logger.log('d', "Info CuraVersion --> " + str(CuraVersion))
         
         # Test version for Cura Master
         # https://github.com/smartavionics/Cura
@@ -173,9 +174,14 @@ class TabPlus(Tool):
 
         self._preferences.addPreference("tab_plus/nb_layer", 1)
         # convert as float to avoid further issue
-        self._Nb_Layer = int(self._preferences.getValue("tab_plus/nb_layer"))       
+        self._Nb_Layer = int(self._preferences.getValue("tab_plus/nb_layer"))
+        self._application.fileCompleted.connect(self._onFileCompleted)        
      
-                
+    def _onFileCompleted(self) -> None:
+        # Reset Stock Data  
+        self._all_picked_node = []
+        self._SMsg = catalog.i18nc("@label", "Remove All") 
+        
     def event(self, event):
         super().event(event)
         modifiers = QApplication.keyboardModifiers()
@@ -572,7 +578,11 @@ class TabPlus(Tool):
         nodes_list = self._getAllSelectedNodes()
         if not nodes_list:
             nodes_list = DepthFirstIterator(self._application.getController().getScene().getRoot())
-        
+
+        if self._all_picked_node:
+            self._all_picked_node = []
+            self._SMsg = catalog.i18nc("@label", "Remove All") 
+            
         self._op = GroupedOperation()   
         for node in nodes_list:
             if node.callDecoration("isSliceable"):
