@@ -16,6 +16,8 @@
 # V1.1.0 18-01-2023    : Integrate translation + French translation
 # V1.1.1 19-01-2023    : Supress Ressource directory
 # V1.1.2 03-02-2023    : Reset data for delete tabs on a new fileload
+# V1.1.3 13-02-2023    : Change CustomTap.qml into CustomTab.qml
+# V1.1.3 13-02-2023    : Change CustomTap.qml into CustomTab.qml
 #------------------------------------------------------------------------------------------------------------------
 
 VERSION_QT5 = False
@@ -586,7 +588,7 @@ class TabPlus(Tool):
         self._op = GroupedOperation()   
         for node in nodes_list:
             if node.callDecoration("isSliceable"):
-                Logger.log('d', "isSliceable : {}".format(node.getName()))
+                # Logger.log('d', "isSliceable : {}".format(node.getName()))
                 node_stack=node.callDecoration("getStack")           
                 if node_stack: 
                     type_infill_mesh = node_stack.getProperty("infill_mesh", "value")
@@ -620,11 +622,9 @@ class TabPlus(Tool):
                             # Logger.log('d', "Nb_Tab : {}".format(nb_Tab))
                             if nb_Tab == 1:
                                 first_pt = Vector(point[0], 0, point[1])
-                                # Logger.log('d', "First X : {}".format(point[0]))
-                                # Logger.log('d', "First Y : {}".format(point[1]))
+                                # Logger.log('d', "First PT : {}".format(first_pt))
                                 
-                            # Logger.log('d', "X : {}".format(point[0]))
-                            # Logger.log('d', "Y : {}".format(point[1]))
+                            # Logger.log('d', "Point : {}".format(point))
                             new_position = Vector(point[0], 0, point[1])
                             lg=act_position-new_position
                             lght = lg.length()
@@ -635,11 +635,11 @@ class TabPlus(Tool):
                                 lgfl=(first_pt-new_position).length()
                                  
                                 # Logger.log('d', "Length First Last : {}".format(lgfl))
-                                if lght >= (self._UseSize*0.5) and lgfl >= (self._UseSize*0.5) :
+                                if lght >= (self._UseSize*0.6) and lgfl >= (self._UseSize*0.6) :
                                     self._createSupportMesh(node, new_position)
                                     act_position = new_position                               
                             else:
-                                if lght >= (self._UseSize*0.5) :
+                                if lght >= (self._UseSize*0.6) :
                                     self._createSupportMesh(node, new_position)
                                     act_position = new_position
                                  
