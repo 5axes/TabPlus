@@ -635,11 +635,11 @@ class TabPlus(Tool):
                                 lgfl=(first_pt-new_position).length()
                                  
                                 # Logger.log('d', "Length First Last : {}".format(lgfl))
-                                if lght >= (self._UseSize*0.6) and lgfl >= (self._UseSize*0.6) :
+                                if lght >= (self._UseSize*0.7) and lgfl >= (self._UseSize*0.7) :
                                     self._createSupportMesh(node, new_position)
                                     act_position = new_position                               
                             else:
-                                if lght >= (self._UseSize*0.6) :
+                                if lght >= (self._UseSize*0.7) :
                                     self._createSupportMesh(node, new_position)
                                     act_position = new_position
                                  
