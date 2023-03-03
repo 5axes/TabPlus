@@ -330,8 +330,7 @@ class TabPlus(Tool):
         # https://github.com/Ultimaker/Cura/issues/9882
         key="support_xy_distance"
         _xy_distance = extruder_stack.getProperty(key, "value")
-        if self._UseOffset !=  _xy_distance and not self._Mesg2 :
-            _msg = "New value : %8.3f" % (self._UseOffset)          
+        if self._UseOffset !=  _xy_distance and not self._Mesg2 :        
             definition_key=key + " label"
             untranslated_label=extruder_stack.getProperty(key,"label")
             translated_label=i18n_catalog.i18nc(definition_key, untranslated_label) 
