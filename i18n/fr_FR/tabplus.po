@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Tab Plus\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-13 12:17+0000\n"
-"PO-Revision-Date: 2023-02-13 13:18+0200\n"
+"POT-Creation-Date: 2023-03-03 10:39+0000\n"
+"PO-Revision-Date: 2023-03-03 11:49+0200\n"
 "Last-Translator: 5axes <5axes@free.fr>\n"
 "Language-Team: 5axes\n"
 "Language: fr\n"
@@ -27,17 +27,17 @@ msgctxt "@info:tooltip"
 msgid "Add Automatique Tab"
 msgstr "Ajouter automatique Pastille"
 
-#: TabPlus.py:100 TabPlus.py:185 TabPlus.py:542 TabPlus.py:586
+#: TabPlus.py:100 TabPlus.py:186 TabPlus.py:565 TabPlus.py:609
 msgctxt "@label"
 msgid "Remove All"
 msgstr "Supprimer Tous"
 
-#: TabPlus.py:308 TabPlus.py:337 TabPlus.py:356
+#: TabPlus.py:309 TabPlus.py:338 TabPlus.py:357 TabPlus.py:379
 msgctxt "@info:label"
 msgid "Info modification current profile '"
 msgstr "Information modification du profil actuel Paramètre '"
 
-#: TabPlus.py:308 TabPlus.py:337 TabPlus.py:356
+#: TabPlus.py:309 TabPlus.py:338 TabPlus.py:357 TabPlus.py:379
 msgctxt "@info:label"
 msgid ""
 "' parameter\n"
@@ -46,22 +46,27 @@ msgstr ""
 "'\n"
 "Nouvelle valeur : "
 
-#: TabPlus.py:308
+#: TabPlus.py:309
 msgctxt "@info:label"
 msgid "Everywhere"
 msgstr "Partout"
 
-#: TabPlus.py:309 TabPlus.py:338 TabPlus.py:357
+#: TabPlus.py:310 TabPlus.py:339 TabPlus.py:358 TabPlus.py:380
 msgctxt "@info:title"
 msgid "Warning ! Tab Anti Warping Plus"
 msgstr "Attention ! Pastille Anti-décollement Plus"
 
-#: TabPlus.py:356
+#: TabPlus.py:357
 msgctxt "@info:label"
 msgid "100%"
 msgstr "100%"
 
-#: TabPlus.py:374
+#: TabPlus.py:379
+msgctxt "@info:label"
+msgid "False"
+msgstr "Faux"
+
+#: TabPlus.py:397
 msgctxt "@label"
 msgid "Remove Last"
 msgstr "Supprimer Derniers"
