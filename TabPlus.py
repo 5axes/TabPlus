@@ -17,7 +17,7 @@
 # V1.1.1 19-01-2023    : Supress Ressource directory
 # V1.1.2 03-02-2023    : Reset data for delete tabs on a new fileload
 # V1.1.3 13-02-2023    : Change CustomTap.qml into CustomTab.qml
-# V1.1.3 13-02-2023    : Change CustomTap.qml into CustomTab.qml
+# V1.1.4 04-03-2023    : Test parameter Brim Replaces Support in 5.3
 #------------------------------------------------------------------------------------------------------------------
 
 VERSION_QT5 = False
@@ -101,6 +101,7 @@ class TabPlus(Tool):
         self._Mesg1 = False
         self._Mesg2 = False
         self._Mesg3 = False
+        self._Mesg4 = False
 
 
         # Shortcut
@@ -363,7 +364,29 @@ class TabPlus(Tool):
                     extruder_stack.setProperty("support_infill_rate", "value", 100)
                 
                 self._Mesg3 = True
-        
+
+        # https://community.ultimaker.com/topic/42967-weird-behavior-of-tab-extension/
+        # Brim Replaces Support
+        if (self.Major>=5 and self.Minor>=3) and not self._Mesg4 :
+            
+            key="brim_replaces_support"
+            s_b = bool(extruder_stack.getProperty(key, "value"))
+            Logger.log('d', 'brim_replaces_support actual : {}'.format(s_b))
+            if s_b :
+                definition_key=key + " label"
+                untranslated_label=extruder_stack.getProperty(key,"label")
+                translated_label=i18n_catalog.i18nc(definition_key, untranslated_label)     
+                Format_String = catalog.i18nc("@info:label", "Info modification current profile '") + translated_label + catalog.i18nc("@info:label", "' parameter\nNew value : ")+ catalog.i18nc("@info:label", "False")                
+                Message(text = Format_String , title = catalog.i18nc("@info:title", "Warning ! Tab Anti Warping Plus")).show()
+                Logger.log('d', 'brim_replaces_support On : {}'.format(s_b))
+                # Define support_infill_rate=100%
+                if self._Extruder_count > 1 :
+                    global_container_stack.setProperty("brim_replaces_support", "value", False)
+                else:
+                    extruder_stack.setProperty("brim_replaces_support", "value", False)
+                
+                self._Mesg4 = True
+                
         #self._op = GroupedOperation()
         # First add node to the scene at the correct position/scale, before parenting, so the support mesh does not get scaled with the parent
         self._op.addOperation(AddSceneNodeOperation(node, self._controller.getScene().getRoot()))
