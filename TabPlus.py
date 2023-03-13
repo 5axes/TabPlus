@@ -18,6 +18,7 @@
 # V1.1.2 03-02-2023    : Reset data for delete tabs on a new fileload
 # V1.1.3 13-02-2023    : Change CustomTap.qml into CustomTab.qml
 # V1.1.4 04-03-2023    : Test parameter Brim Replaces Support in 5.3
+# V1.1.5 13-03-2023    : Qml & resources location
 #------------------------------------------------------------------------------------------------------------------
 
 VERSION_QT5 = False
@@ -74,7 +75,7 @@ i18n_catalog = i18nCatalog("fdmprinter.def.json")
 i18n_extrud_catalog = i18nCatalog("fdmextruder.def.json")
 
 Resources.addSearchPath(
-    os.path.join(os.path.abspath(os.path.dirname(__file__)))
+    os.path.join(os.path.abspath(os.path.dirname(__file__)),'resources')
 )  # Plugin translation file import
 
 catalog = i18nCatalog("tabplus")
