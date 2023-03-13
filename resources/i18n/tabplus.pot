@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Tab Plus\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-03 10:50+0000\n"
+"POT-Creation-Date: 2023-03-13 21:46+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,48 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: TabPlus.py:101 TabPlus.py:187 TabPlus.py:565 TabPlus.py:609
+msgctxt "@label"
+msgid "Remove All"
+msgstr ""
+
+#: TabPlus.py:310 TabPlus.py:338 TabPlus.py:357 TabPlus.py:379
+msgctxt "@info:label"
+msgid "Info modification current profile '"
+msgstr ""
+
+#: TabPlus.py:310 TabPlus.py:338 TabPlus.py:357 TabPlus.py:379
+msgctxt "@info:label"
+msgid ""
+"' parameter\n"
+"New value : "
+msgstr ""
+
+#: TabPlus.py:310
+msgctxt "@info:label"
+msgid "Everywhere"
+msgstr ""
+
+#: TabPlus.py:311 TabPlus.py:339 TabPlus.py:358 TabPlus.py:380
+msgctxt "@info:title"
+msgid "Warning ! Tab Anti Warping Plus"
+msgstr ""
+
+#: TabPlus.py:357
+msgctxt "@info:label"
+msgid "100%"
+msgstr ""
+
+#: TabPlus.py:379
+msgctxt "@info:label"
+msgid "False"
+msgstr ""
+
+#: TabPlus.py:397
+msgctxt "@label"
+msgid "Remove Last"
+msgstr ""
 
 #: __init__.py:23
 msgctxt "@label"
@@ -27,74 +69,32 @@ msgctxt "@info:tooltip"
 msgid "Add Automatique Tab"
 msgstr ""
 
-#: TabPlus.py:100 TabPlus.py:186 TabPlus.py:564 TabPlus.py:608
-msgctxt "@label"
-msgid "Remove All"
-msgstr ""
-
-#: TabPlus.py:309 TabPlus.py:337 TabPlus.py:356 TabPlus.py:378
-msgctxt "@info:label"
-msgid "Info modification current profile '"
-msgstr ""
-
-#: TabPlus.py:309 TabPlus.py:337 TabPlus.py:356 TabPlus.py:378
-msgctxt "@info:label"
-msgid ""
-"' parameter\n"
-"New value : "
-msgstr ""
-
-#: TabPlus.py:309
-msgctxt "@info:label"
-msgid "Everywhere"
-msgstr ""
-
-#: TabPlus.py:310 TabPlus.py:338 TabPlus.py:357 TabPlus.py:379
-msgctxt "@info:title"
-msgid "Warning ! Tab Anti Warping Plus"
-msgstr ""
-
-#: TabPlus.py:356
-msgctxt "@info:label"
-msgid "100%"
-msgstr ""
-
-#: TabPlus.py:378
-msgctxt "@info:label"
-msgid "False"
-msgstr ""
-
-#: TabPlus.py:396
-msgctxt "@label"
-msgid "Remove Last"
-msgstr ""
-
-#: qml_qt6/CustomTab.qml:45 qml_qt5/CustomTab.qml:42
+#: qml/qml_qt5/CustomTab.qml:42 qml/qml_qt6/CustomTab.qml:45
 msgctxt "@label"
 msgid "Size"
 msgstr ""
 
-#: qml_qt6/CustomTab.qml:77 qml_qt5/CustomTab.qml:53
+#: qml/qml_qt5/CustomTab.qml:53 qml/qml_qt6/CustomTab.qml:77
 msgctxt "@label"
 msgid "X/Y Distance"
 msgstr ""
 
-#: qml_qt6/CustomTab.qml:108 qml_qt5/CustomTab.qml:64
+#: qml/qml_qt5/CustomTab.qml:64 qml/qml_qt6/CustomTab.qml:108
 msgctxt "@label"
 msgid "Number of layers"
 msgstr ""
 
-#: qml_qt6/CustomTab.qml:136 qml_qt5/CustomTab.qml:140
+#: qml/qml_qt5/CustomTab.qml:140 qml/qml_qt6/CustomTab.qml:136
 msgctxt "@option:check"
 msgid "Define as Capsule"
 msgstr ""
 
-#: qml_qt6/CustomTab.qml:197 qml_qt5/CustomTab.qml:182
+#: qml/qml_qt5/CustomTab.qml:182 qml/qml_qt6/CustomTab.qml:197
 msgctxt "@label"
 msgid "Automatic Addition"
 msgstr ""
 
-#: qml_qt6/CustomTab.qml:206 qml_qt5/CustomTab.qml:192
+#: qml/qml_qt5/CustomTab.qml:192 qml/qml_qt6/CustomTab.qml:206
 msgctxt "@option:check"
 msgid "Set On Adhesion Area"
 msgstr ""
